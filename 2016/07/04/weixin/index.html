@@ -1,0 +1,383 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>微信公众平台 | Munachar个人博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Munachar">
+    
+    <meta name="description" content="微信公众平台Js API（WeixinApi）关于WeixinApi1、WeixinApi为何诞生以前顺便玩儿了下微信公众账号，做Web前端开发的，都对页面脚本充满好奇，所以研究了下，放到Blog上，也正因为微信官方一直没有放出正式的Api提供给用户来用，所以大量的用户到我blog上去询问Weixi">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+	
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-80302665-1', 'auto');  
+ga('send', 'pageview');
+</script>
+
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="Munachar个人博客" title="Munachar个人博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Munachar个人博客">Munachar个人博客</a></h1>
+				<h2 class="blog-motto">小憩时光</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:hdh.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/07/04/weixin/" title="微信公众平台" itemprop="url">微信公众平台</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="http://hdh.github.io" title="Munachar">Munachar</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2016-07-04T07:31:08.000Z" itemprop="datePublished">2016-07-04</time>
+    更新日期:<time datetime="2016-07-05T02:17:29.000Z" itemprop="dateModified">2016-07-05</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#微信公众平台Js-API（WeixinApi）"><span class="toc-number">1.</span> <span class="toc-text">微信公众平台Js API（WeixinApi）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于WeixinApi"><span class="toc-number">1.1.</span> <span class="toc-text">关于WeixinApi</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、WeixinApi为何诞生"><span class="toc-number">1.1.1.</span> <span class="toc-text">1、WeixinApi为何诞生</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、免责声明"><span class="toc-number">1.1.2.</span> <span class="toc-text">2、免责声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、WeixinApi可能停止更新"><span class="toc-number">1.1.3.</span> <span class="toc-text">3、WeixinApi可能停止更新</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目录"><span class="toc-number">1.2.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#快速使用"><span class="toc-number">1.3.</span> <span class="toc-text">快速使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#详细Api列表"><span class="toc-number">1.4.</span> <span class="toc-text">详细Api列表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、初始化等待分享"><span class="toc-number">1.4.1.</span> <span class="toc-text">1、初始化等待分享</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、隐藏右上角option-menu入口"><span class="toc-number">1.4.2.</span> <span class="toc-text">2、隐藏右上角option menu入口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、隐藏底部工具栏"><span class="toc-number">1.4.3.</span> <span class="toc-text">3、隐藏底部工具栏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、获取当前的网络类型"><span class="toc-number">1.4.4.</span> <span class="toc-text">4、获取当前的网络类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、调起客户端图片播放组件"><span class="toc-number">1.4.5.</span> <span class="toc-text">5、调起客户端图片播放组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、关掉当前微信公众页面窗口"><span class="toc-number">1.4.6.</span> <span class="toc-text">6、关掉当前微信公众页面窗口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7、判断当前网页是否在微信内置浏览器中打开"><span class="toc-number">1.4.7.</span> <span class="toc-text">7、判断当前网页是否在微信内置浏览器中打开</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8、开启WeixinApi的错误监控"><span class="toc-number">1.4.8.</span> <span class="toc-text">8、开启WeixinApi的错误监控</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9、发送电子邮件"><span class="toc-number">1.4.9.</span> <span class="toc-text">9、发送电子邮件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10、禁止用户分享"><span class="toc-number">1.4.10.</span> <span class="toc-text">10、禁止用户分享</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见问题"><span class="toc-number">1.5.</span> <span class="toc-text">常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、用了这个API怎么没生效"><span class="toc-number">1.5.1.</span> <span class="toc-text">1、用了这个API怎么没生效</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、Android上取消分享依然提示成功"><span class="toc-number">1.5.2.</span> <span class="toc-text">2、Android上取消分享依然提示成功</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、想自己做一个按钮直接分享"><span class="toc-number">1.5.3.</span> <span class="toc-text">3、想自己做一个按钮直接分享</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、怎样动态修改分享的信息：wxData"><span class="toc-number">1.5.4.</span> <span class="toc-text">4、怎样动态修改分享的信息：wxData</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、收藏的时候为什么也执行分享的回调了？"><span class="toc-number">1.5.5.</span> <span class="toc-text">5、收藏的时候为什么也执行分享的回调了？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他"><span class="toc-number">1.6.</span> <span class="toc-text">其他</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、更多互动"><span class="toc-number">1.6.1.</span> <span class="toc-text">1、更多互动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、招聘广告"><span class="toc-number">1.6.2.</span> <span class="toc-text">2、招聘广告</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、如果你觉得这个Api对你有用："><span class="toc-number">1.6.3.</span> <span class="toc-text">3、如果你觉得这个Api对你有用：</span></a></li></ol></li></ol></li></ol>
+		</div>
+		
+		<h1 id="微信公众平台Js-API（WeixinApi）"><a href="#微信公众平台Js-API（WeixinApi）" class="headerlink" title="微信公众平台Js API（WeixinApi）"></a>微信公众平台Js API（WeixinApi）</h1><h2 id="关于WeixinApi"><a href="#关于WeixinApi" class="headerlink" title="关于WeixinApi"></a>关于WeixinApi</h2><h3 id="1、WeixinApi为何诞生"><a href="#1、WeixinApi为何诞生" class="headerlink" title="1、WeixinApi为何诞生"></a>1、WeixinApi为何诞生</h3><p>以前顺便玩儿了下微信公众账号，做Web前端开发的，都对页面脚本充满好奇，所以研究了下，放到<a href="http://www.baidufe.com" target="_blank" rel="external"><code>Blog</code></a>上，<br>也正因为微信官方一直没有放出正式的Api提供给用户来用，所以大量的用户到我blog上去询问<code>WeixinJSBridge</code>相关的技术点，索性我就整理了一下，<br>起个名字叫<code>WeixinApi</code>开源到github来，提供给大家使用！</p>
+<h3 id="2、免责声明"><a href="#2、免责声明" class="headerlink" title="2、免责声明"></a>2、免责声明</h3><p>此Api为<code>非官方</code>版，由于官方的限制，继续使用此Api还有可能会出现一些意向不到的问题，一切后果请自行承担！</p>
+<h3 id="3、WeixinApi可能停止更新"><a href="#3、WeixinApi可能停止更新" class="headerlink" title="3、WeixinApi可能停止更新"></a>3、WeixinApi可能停止更新</h3><p>目前官方已经出了正式版本的SDK，详情可见<a href="http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html" target="_blank" rel="external">微信JS-SDK说明文档</a>,<br>所以大家还是尽早迁移到官方版本吧，这对大家来说是好事，以后出什么问题，官方渠道应该都会第一时间给出解决方案，稳定很多，也不至于经常被黑！<br>本API可能以后就不会频繁更新了，各位知晓！</p>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li><a href="#user-content-快速使用">快速使用</a></li>
+<li><a href="#user-content-详细api列表">详细Api列表</a><ul>
+<li><a href="#user-content-1初始化等待分享">1、初始化等待分享</a></li>
+<li><a href="#user-content-2隐藏右上角option-menu入口">2、隐藏右上角option menu入口</a></li>
+<li><a href="#user-content-3隐藏底部工具栏">3、隐藏底部工具栏</a></li>
+<li><a href="#user-content-4获取当前的网络类型">4、获取当前的网络类型</a></li>
+<li><a href="#user-content-5调起客户端图片播放组件">5、调起客户端图片播放组件</a></li>
+<li><a href="#user-content-6关掉当前微信公众页面窗口">6、关掉当前微信公众页面窗口</a></li>
+<li><a href="#user-content-7判断当前网页是否在微信内置浏览器中打开">7、判断当前网页是否在微信内置浏览器中打开</a></li>
+<li><a href="#user-content-8开启weixinapi的错误监控">8、开启WeixinApi的错误监控</a></li>
+<li><a href="#user-content-9发送电子邮件">9、发送电子邮件</a></li>
+<li><a href="#user-content-10禁止用户分享">10、禁止用户分享</a></li>
+</ul>
+</li>
+<li><a href="#user-content-常见问题">常见问题</a></li>
+<li><a href="#user-content-其他">其他</a></li>
+</ul>
+<p>你可以用微信的“扫一扫”来打开下面这个二维码体验一下：</p>
+<p><img src="http://www.baidufe.com/upload/images/2014-06-14_3.47.02.png" alt="Weixin Api Demo"></p>
+<h2 id="快速使用"><a href="#快速使用" class="headerlink" title="快速使用"></a>快速使用</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 定义微信分享的数据</span></div><div class="line"><span class="keyword">var</span> wxData = &#123;</div><div class="line">    <span class="string">"appId"</span>: <span class="string">""</span>, <span class="comment">// 服务号可以填写appId</span></div><div class="line">    <span class="string">"imgUrl"</span> : <span class="string">'http://photocdn.sohu.com/20130122/Img364302298.jpg'</span>,</div><div class="line">    <span class="string">"link"</span> : <span class="string">'http://www.baidufe.com'</span>,</div><div class="line">    <span class="string">"desc"</span> : <span class="string">'使用警告：此Api非官方版本，请各位尽量将分享功能迁移至腾讯官方版，会更稳定些！'</span>,</div><div class="line">    <span class="string">"title"</span> : <span class="string">"欢迎使用WeixinApi"</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 分享的回调</span></div><div class="line"><span class="keyword">var</span> wxCallbacks = &#123;</div><div class="line">    <span class="comment">// 收藏操作是否触发回调，默认是开启的</span></div><div class="line">    favorite : <span class="literal">false</span>,</div><div class="line"></div><div class="line">    <span class="comment">// 分享操作开始之前</span></div><div class="line">    ready : <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="comment">// 你可以在这里对分享的数据进行重组</span></div><div class="line">        alert(<span class="string">"准备分享"</span>);</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// 分享被用户自动取消</span></div><div class="line">    cancel : <span class="function"><span class="keyword">function</span>(<span class="params">resp</span>) </span>&#123;</div><div class="line">        <span class="comment">// 你可以在你的页面上给用户一个小Tip，为什么要取消呢？</span></div><div class="line">        alert(<span class="string">"分享被取消，msg="</span> + resp.err_msg);</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// 分享失败了</span></div><div class="line">    fail : <span class="function"><span class="keyword">function</span>(<span class="params">resp</span>) </span>&#123;</div><div class="line">        <span class="comment">// 分享失败了，是不是可以告诉用户：不要紧，可能是网络问题，一会儿再试试？</span></div><div class="line">        alert(<span class="string">"分享失败，msg="</span> + resp.err_msg);</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// 分享成功</span></div><div class="line">    confirm : <span class="function"><span class="keyword">function</span>(<span class="params">resp</span>) </span>&#123;</div><div class="line">        <span class="comment">// 分享成功了，我们是不是可以做一些分享统计呢？</span></div><div class="line">        alert(<span class="string">"分享成功，msg="</span> + resp.err_msg);</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// 整个分享过程结束</span></div><div class="line">    all : <span class="function"><span class="keyword">function</span>(<span class="params">resp,shareTo</span>) </span>&#123;</div><div class="line">        <span class="comment">// 如果你做的是一个鼓励用户进行分享的产品，在这里是不是可以给用户一些反馈了？</span></div><div class="line">        alert(<span class="string">"分享"</span> + (shareTo ? <span class="string">"到"</span> + shareTo : <span class="string">""</span>) + <span class="string">"结束，msg="</span> + resp.err_msg);</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"><span class="comment">// 自定义分享到：微信好友、朋友圈、腾讯微博、QQ好友</span></div><div class="line">WeixinApi.share(wxData,wxCallbacks);</div></pre></td></tr></table></figure>
+<p>可下载源码，部署sample/sample-new.html进行测试</p>
+<h2 id="详细Api列表"><a href="#详细Api列表" class="headerlink" title="详细Api列表"></a>详细Api列表</h2><p>使用起来比较简单，具体可参考sample/sample-normal.html中的实现</p>
+<h3 id="1、初始化等待分享"><a href="#1、初始化等待分享" class="headerlink" title="1、初始化等待分享"></a>1、初始化等待分享</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 开发阶段，开启WeixinApi的调试模式</span></div><div class="line">WeixinApi.enableDebugMode();</div><div class="line"></div><div class="line"><span class="comment">// 初始化WeixinApi，等待分享</span></div><div class="line">WeixinApi.ready(<span class="function"><span class="keyword">function</span>(<span class="params">Api</span>) </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">// 微信分享的数据</span></div><div class="line">    <span class="keyword">var</span> wxData = &#123;</div><div class="line">        <span class="string">"appId"</span>: <span class="string">""</span>, <span class="comment">// 服务号可以填写appId</span></div><div class="line">        <span class="string">"imgUrl"</span> : <span class="string">'http://www.baidufe.com/fe/blog/static/img/weixin-qrcode-2.jpg'</span>,</div><div class="line">        <span class="string">"link"</span> : <span class="string">'http://www.baidufe.com'</span>,</div><div class="line">        <span class="string">"desc"</span> : <span class="string">'使用警告：此Api非官方版本，请各位尽量将分享功能迁移至腾讯官方版，会更稳定些！'</span>,</div><div class="line">        <span class="string">"title"</span> : <span class="string">"欢迎使用WeixinApi"</span></div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="comment">// 分享的回调</span></div><div class="line">    <span class="keyword">var</span> wxCallbacks = &#123;</div><div class="line">        <span class="comment">// 收藏操作不执行回调，默认是开启(true)的</span></div><div class="line">        favorite : <span class="literal">false</span>,</div><div class="line"></div><div class="line">        <span class="comment">// 分享操作开始之前</span></div><div class="line">        ready : <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="comment">// 你可以在这里对分享的数据进行重组</span></div><div class="line">            alert(<span class="string">"准备分享"</span>);</div><div class="line">        &#125;,</div><div class="line">        <span class="comment">// 分享被用户自动取消</span></div><div class="line">        cancel : <span class="function"><span class="keyword">function</span>(<span class="params">resp</span>) </span>&#123;</div><div class="line">            <span class="comment">// 你可以在你的页面上给用户一个小Tip，为什么要取消呢？</span></div><div class="line">            alert(<span class="string">"分享被取消，msg="</span> + resp.err_msg);</div><div class="line">        &#125;,</div><div class="line">        <span class="comment">// 分享失败了</span></div><div class="line">        fail : <span class="function"><span class="keyword">function</span>(<span class="params">resp</span>) </span>&#123;</div><div class="line">            <span class="comment">// 分享失败了，是不是可以告诉用户：不要紧，可能是网络问题，一会儿再试试？</span></div><div class="line">            alert(<span class="string">"分享失败，msg="</span> + resp.err_msg);</div><div class="line">        &#125;,</div><div class="line">        <span class="comment">// 分享成功</span></div><div class="line">        confirm : <span class="function"><span class="keyword">function</span>(<span class="params">resp</span>) </span>&#123;</div><div class="line">            <span class="comment">// 分享成功了，我们是不是可以做一些分享统计呢？</span></div><div class="line">            alert(<span class="string">"分享成功，msg="</span> + resp.err_msg);</div><div class="line">        &#125;,</div><div class="line">        <span class="comment">// 整个分享过程结束</span></div><div class="line">        all : <span class="function"><span class="keyword">function</span>(<span class="params">resp,shareTo</span>) </span>&#123;</div><div class="line">            <span class="comment">// 如果你做的是一个鼓励用户进行分享的产品，在这里是不是可以给用户一些反馈了？</span></div><div class="line">            alert(<span class="string">"分享"</span> + (shareTo ? <span class="string">"到"</span> + shareTo : <span class="string">""</span>) + <span class="string">"结束，msg="</span> + resp.err_msg);</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="comment">// 用户点开右上角popup菜单后，点击分享给好友，会执行下面这个代码</span></div><div class="line">    Api.shareToFriend(wxData, wxCallbacks);</div><div class="line"></div><div class="line">    <span class="comment">// 点击分享到朋友圈，会执行下面这个代码</span></div><div class="line">    Api.shareToTimeline(wxData, wxCallbacks);</div><div class="line"></div><div class="line">    <span class="comment">// 点击分享到腾讯微博，会执行下面这个代码</span></div><div class="line">    Api.shareToWeibo(wxData, wxCallbacks);</div><div class="line"></div><div class="line">    <span class="comment">// iOS上，可以直接调用这个API进行分享，一句话搞定</span></div><div class="line">    Api.generalShare(wxData,wxCallbacks);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>可能有的朋友不知道appId从哪儿获取，请看这里：<a href="http://jingyan.baidu.com/article/6525d4b12af618ac7c2e9468.html" target="_blank" rel="external">如何获取appId</a></p>
+<p><strong>分享的数据可以动态修改：</strong></p>
+<ul>
+<li>普通模式分享：分享的数据是固定的，代码请参考 <a href="https://github.com/zxlie/WeixinApi/blob/master/sample/sample-normal.html" target="_blank" rel="external">sample/sample-normal.html</a></li>
+<li>异步模式分享：分享的数据是可以被动态修改的，代码请参考 <a href="https://github.com/zxlie/WeixinApi/blob/master/sample/sample-async.html" target="_blank" rel="external">sample/sample-async.html</a></li>
+</ul>
+<h3 id="2、隐藏右上角option-menu入口"><a href="#2、隐藏右上角option-menu入口" class="headerlink" title="2、隐藏右上角option menu入口"></a>2、隐藏右上角option menu入口</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">WeixinApi.ready(<span class="function"><span class="keyword">function</span>(<span class="params">Api</span>) </span>&#123;</div><div class="line">	<span class="comment">// 隐藏</span></div><div class="line">	Api.hideOptionMenu();</div><div class="line">	</div><div class="line">	<span class="comment">// 显示</span></div><div class="line">	<span class="comment">// Api.showOptionMenu();</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="3、隐藏底部工具栏"><a href="#3、隐藏底部工具栏" class="headerlink" title="3、隐藏底部工具栏"></a>3、隐藏底部工具栏</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">WeixinApi.ready(<span class="function"><span class="keyword">function</span>(<span class="params">Api</span>) </span>&#123;</div><div class="line">	<span class="comment">// 隐藏</span></div><div class="line">	Api.hideToolbar();</div><div class="line">	</div><div class="line">	<span class="comment">// 显示</span></div><div class="line">	<span class="comment">// Api.showToolbar();</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="4、获取当前的网络类型"><a href="#4、获取当前的网络类型" class="headerlink" title="4、获取当前的网络类型"></a>4、获取当前的网络类型</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">WeixinApi.ready(<span class="function"><span class="keyword">function</span>(<span class="params">Api</span>) </span>&#123;</div><div class="line">	Api.getNetworkType(<span class="function"><span class="keyword">function</span>(<span class="params">network</span>)</span>&#123;</div><div class="line">		<span class="comment">/**</span></div><div class="line">		 * network取值：</div><div class="line">		 *</div><div class="line">		 * network_type:wifi     wifi网络</div><div class="line">	     * network_type:edge     非wifi,包含3G/2G</div><div class="line">	     * network_type:fail     网络断开连接</div><div class="line">	     * network_type:wwan     2g或者3g</div><div class="line">	     */</div><div class="line">	&#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="5、调起客户端图片播放组件"><a href="#5、调起客户端图片播放组件" class="headerlink" title="5、调起客户端图片播放组件"></a>5、调起客户端图片播放组件</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">WeixinApi.ready(<span class="function"><span class="keyword">function</span>(<span class="params">Api</span>) </span>&#123;</div><div class="line">	<span class="comment">// 需要播放的图片src list</span></div><div class="line">	<span class="keyword">var</span> srcList = [src1, src2, ..., srcN];</div><div class="line">	<span class="comment">// 选一个作为当前需要展示的图片src</span></div><div class="line">	<span class="keyword">var</span> curSrc = src1;</div><div class="line">	<span class="comment">// 调起</span></div><div class="line">	Api.imagePreview(curSrc, srcList);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>调起客户端图片播放组件，还有一种更屌的方法，不需要依赖这个WeixinApi，直接a标签实现就行，具体格式：</p>
+<pre><code>&lt;a href=&quot;weixin://viewimage/`YourImageURL`&quot;&gt;AnyThing&lt;/a&gt;
+</code></pre><p>我们可以用A标签来嵌套这个img，具体Demo如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"weixin://viewimage/http://www.baidu.com/img/bdlogo.gif"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://www.baidu.com/img/bdlogo.gif"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"weixin://viewimage/http://tb2.bdstatic.com/tb/static-common/img/search_logo_big_6a13b553.gif"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://tb2.bdstatic.com/tb/static-common/img/search_logo_big_6a13b553.gif"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="6、关掉当前微信公众页面窗口"><a href="#6、关掉当前微信公众页面窗口" class="headerlink" title="6、关掉当前微信公众页面窗口"></a>6、关掉当前微信公众页面窗口</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">WeixinApi.ready(<span class="function"><span class="keyword">function</span>(<span class="params">Api</span>) </span>&#123;	</div><div class="line">	<span class="comment">// 关闭窗口</span></div><div class="line">    WeixinApi.closeWindow(&#123;</div><div class="line">        success : <span class="function"><span class="keyword">function</span>(<span class="params">resp</span>)</span>&#123;</div><div class="line">            alert(<span class="string">'关闭窗口成功！'</span>);</div><div class="line">        &#125;,</div><div class="line">        fail : <span class="function"><span class="keyword">function</span>(<span class="params">resp</span>)</span>&#123;</div><div class="line">            alert(<span class="string">'关闭窗口失败'</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="7、判断当前网页是否在微信内置浏览器中打开"><a href="#7、判断当前网页是否在微信内置浏览器中打开" class="headerlink" title="7、判断当前网页是否在微信内置浏览器中打开"></a>7、判断当前网页是否在微信内置浏览器中打开</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">// true or false</span></div><div class="line"><span class="keyword">var</span> flag = WeixinApi.openInWeixin();</div></pre></td></tr></table></figure>
+<h3 id="8、开启WeixinApi的错误监控"><a href="#8、开启WeixinApi的错误监控" class="headerlink" title="8、开启WeixinApi的错误监控"></a>8、开启WeixinApi的错误监控</h3><p>注意，这句代码务必放在WeixinApi.ready之前；上线的时候，根据实际需要，可删掉它</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 方法1：不带任何参数，将以alert方式提示出错信息</span></div><div class="line">WeixinApi.enableDebugMode();</div><div class="line"></div><div class="line"><span class="comment">// 方法2：给一个callback，自己处理错误信息</span></div><div class="line">WeixinApi.enableDebugMode(<span class="function"><span class="keyword">function</span>(<span class="params">errObj</span>)</span>&#123;</div><div class="line">    <span class="comment">// errObj = &#123;</span></div><div class="line">    <span class="comment">//     message : errorMessage,</span></div><div class="line">    <span class="comment">//     script : scriptURI,</span></div><div class="line">    <span class="comment">//     line : lineNumber,</span></div><div class="line">    <span class="comment">//     column : columnNumber</span></div><div class="line">    <span class="comment">// &#125;</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 当然，你还可以做一件事：把这些错误信息上报到服务器</span></div></pre></td></tr></table></figure>
+<h3 id="9、发送电子邮件"><a href="#9、发送电子邮件" class="headerlink" title="9、发送电子邮件"></a>9、发送电子邮件</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">WeixinApi.sendEmail(&#123;</div><div class="line">    subject : <span class="string">'邮件标题'</span>,</div><div class="line">    body : <span class="string">'邮件正文'</span></div><div class="line">&#125;,<span class="function"><span class="keyword">function</span>(<span class="params">resp</span>)</span>&#123;</div><div class="line">    <span class="comment">// 注意这里可不要轻易alert，会卡死的。。。</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="10、禁止用户分享"><a href="#10、禁止用户分享" class="headerlink" title="10、禁止用户分享"></a>10、禁止用户分享</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 先对Api进行初始化</span></div><div class="line">WeixinApi.ready(<span class="function"><span class="keyword">function</span>(<span class="params">Api</span>) </span>&#123;</div><div class="line">    <span class="comment">// 禁止分享</span></div><div class="line">    Api.disabledShare(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        alert(<span class="string">'当前页面禁止分享！'</span>);</div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>代码请参考 <a href="https://github.com/zxlie/WeixinApi/blob/master/sample/sample-disable.html" target="_blank" rel="external">sample/sample-normal.html</a></p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="1、用了这个API怎么没生效"><a href="#1、用了这个API怎么没生效" class="headerlink" title="1、用了这个API怎么没生效"></a>1、用了这个API怎么没生效</h3><p>如果遇到这种情况，请先回到这里，扫描最上面的 <a href="#user-content-api能实现什么">二维码</a> Demo，首先验证Demo是否能运行正确；然后再参照demo.html调整自己的代码：</p>
+<ul>
+<li>1）、<code>WeixinApi.js</code>路径是否引用正确</li>
+<li>2）、<code>WeixinApi.ready</code>是否正确执行了？（可以在里面加一个alert，简单粗暴可依赖）</li>
+<li>3）、开启<code>WeixinApi.enableDebugMode</code>方便问题定位</li>
+</ul>
+<h3 id="2、Android上取消分享依然提示成功"><a href="#2、Android上取消分享依然提示成功" class="headerlink" title="2、Android上取消分享依然提示成功"></a>2、Android上取消分享依然提示成功</h3><p>传送门：<a href="http://www.baidufe.com/item/4bdcde11a024c63df3af.html" target="_blank" rel="external">为什么分享到朋友圈，取消了依然提示成功？</a></p>
+<h3 id="3、想自己做一个按钮直接分享"><a href="#3、想自己做一个按钮直接分享" class="headerlink" title="3、想自己做一个按钮直接分享"></a>3、想自己做一个按钮直接分享</h3><p>就我目前了解到的情况来看，是行不通的，官方都有做权限控制，感兴趣可以到这里<a href="http://www.baidufe.com/item/f07a3be0b23b4c9606bb.html#content" target="_blank" rel="external">去翻一下评论</a></p>
+<h3 id="4、怎样动态修改分享的信息：wxData"><a href="#4、怎样动态修改分享的信息：wxData" class="headerlink" title="4、怎样动态修改分享的信息：wxData"></a>4、怎样动态修改分享的信息：wxData</h3><p>用到Api提供的<code>async:true</code>配置，具体可阅读<a href="http://www.baidufe.com/item/f07a3be0b23b4c9606bb.html" target="_blank" rel="external">这里的使用介绍</a></p>
+<h3 id="5、收藏的时候为什么也执行分享的回调了？"><a href="#5、收藏的时候为什么也执行分享的回调了？" class="headerlink" title="5、收藏的时候为什么也执行分享的回调了？"></a>5、收藏的时候为什么也执行分享的回调了？</h3><p>请在wxCallbacks中设置<code>favorite:false</code>，关闭收藏操作的callback</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="1、更多互动"><a href="#1、更多互动" class="headerlink" title="1、更多互动"></a>1、更多互动</h3><p>详细的使用场景，还可以到这里获取：<a href="http://www.baidufe.com/item/f07a3be0b23b4c9606bb.html" target="_blank" rel="external">http://www.baidufe.com/item/f07a3be0b23b4c9606bb.html</a></p>
+<p>注意：这只是发烧版本，非微信官方出品！有问题可大家一起来讨论，我很乐意与大家一起来完善这个API。</p>
+<h3 id="2、招聘广告"><a href="#2、招聘广告" class="headerlink" title="2、招聘广告"></a>2、招聘广告</h3><p>鄙人目前在美丽说商业产品前端团队，队里缺靠谱的FE，欢迎推荐或自荐：<a href="http://www.baidufe.com/item/25ea3376a893619eea8c.html" target="_blank" rel="external">http://www.baidufe.com/item/25ea3376a893619eea8c.html</a></p>
+<h3 id="3、如果你觉得这个Api对你有用："><a href="#3、如果你觉得这个Api对你有用：" class="headerlink" title="3、如果你觉得这个Api对你有用："></a>3、如果你觉得这个Api对你有用：</h3><p><img src="http://www.baidufe.com/upload/images/2014-11-03_21-19-40_5.png" alt="alien-alipay-qrcode-256.png"></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="http://hdh.github.io/2016/07/04/weixin/" data-title="微信公众平台 | Munachar个人博客" data-tsina="null" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/07/04/我的博客/" title="如何处理信息过载">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  如何处理信息过载</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/07/04/My-New-Post/"  title="My New Post">
+ <strong>NEXT:</strong><br/> 
+ <span>My New Post
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section class="comment">
+	<div class="ds-thread"></div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#微信公众平台Js-API（WeixinApi）"><span class="toc-number">1.</span> <span class="toc-text">微信公众平台Js API（WeixinApi）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于WeixinApi"><span class="toc-number">1.1.</span> <span class="toc-text">关于WeixinApi</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、WeixinApi为何诞生"><span class="toc-number">1.1.1.</span> <span class="toc-text">1、WeixinApi为何诞生</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、免责声明"><span class="toc-number">1.1.2.</span> <span class="toc-text">2、免责声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、WeixinApi可能停止更新"><span class="toc-number">1.1.3.</span> <span class="toc-text">3、WeixinApi可能停止更新</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目录"><span class="toc-number">1.2.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#快速使用"><span class="toc-number">1.3.</span> <span class="toc-text">快速使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#详细Api列表"><span class="toc-number">1.4.</span> <span class="toc-text">详细Api列表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、初始化等待分享"><span class="toc-number">1.4.1.</span> <span class="toc-text">1、初始化等待分享</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、隐藏右上角option-menu入口"><span class="toc-number">1.4.2.</span> <span class="toc-text">2、隐藏右上角option menu入口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、隐藏底部工具栏"><span class="toc-number">1.4.3.</span> <span class="toc-text">3、隐藏底部工具栏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、获取当前的网络类型"><span class="toc-number">1.4.4.</span> <span class="toc-text">4、获取当前的网络类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、调起客户端图片播放组件"><span class="toc-number">1.4.5.</span> <span class="toc-text">5、调起客户端图片播放组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、关掉当前微信公众页面窗口"><span class="toc-number">1.4.6.</span> <span class="toc-text">6、关掉当前微信公众页面窗口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7、判断当前网页是否在微信内置浏览器中打开"><span class="toc-number">1.4.7.</span> <span class="toc-text">7、判断当前网页是否在微信内置浏览器中打开</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8、开启WeixinApi的错误监控"><span class="toc-number">1.4.8.</span> <span class="toc-text">8、开启WeixinApi的错误监控</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9、发送电子邮件"><span class="toc-number">1.4.9.</span> <span class="toc-text">9、发送电子邮件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10、禁止用户分享"><span class="toc-number">1.4.10.</span> <span class="toc-text">10、禁止用户分享</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见问题"><span class="toc-number">1.5.</span> <span class="toc-text">常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、用了这个API怎么没生效"><span class="toc-number">1.5.1.</span> <span class="toc-text">1、用了这个API怎么没生效</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、Android上取消分享依然提示成功"><span class="toc-number">1.5.2.</span> <span class="toc-text">2、Android上取消分享依然提示成功</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、想自己做一个按钮直接分享"><span class="toc-number">1.5.3.</span> <span class="toc-text">3、想自己做一个按钮直接分享</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、怎样动态修改分享的信息：wxData"><span class="toc-number">1.5.4.</span> <span class="toc-text">4、怎样动态修改分享的信息：wxData</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、收藏的时候为什么也执行分享的回调了？"><span class="toc-number">1.5.5.</span> <span class="toc-text">5、收藏的时候为什么也执行分享的回调了？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他"><span class="toc-number">1.6.</span> <span class="toc-text">其他</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、更多互动"><span class="toc-number">1.6.1.</span> <span class="toc-text">1、更多互动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、招聘广告"><span class="toc-number">1.6.2.</span> <span class="toc-text">2、招聘广告</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、如果你觉得这个Api对你有用："><span class="toc-number">1.6.3.</span> <span class="toc-text">3、如果你觉得这个Api对你有用：</span></a></li></ol></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+
+  <div class="rsspart">
+	<a href="null" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2016 
+		
+		<a href="http://hdh.github.io" target="_blank" title="Munachar">Munachar</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"null"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-80302665-1', 'auto');  
+ga('send', 'pageview');
+</script>
+
+
+  </body>
+</html>
