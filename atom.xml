@@ -52,7 +52,7 @@
     <link href="http://yoursite.com/2016/06/21/%E7%B4%A0%E6%95%B0%E7%AE%97%E6%B3%95/"/>
     <id>http://yoursite.com/2016/06/21/素数算法/</id>
     <published>2016-06-21T10:50:59.000Z</published>
-    <updated>2016-08-12T09:44:56.916Z</updated>
+    <updated>2016-08-12T09:49:13.815Z</updated>
     
     <content type="html"><![CDATA[<p>function shu(arr){<br>    return arr.filter(<br>        function(num) {<br>          if (num == 1) {<br>            return false;<br>          }<br>          if (num == 2) {<br>            return true;<br>          }<br>          for (var i = 2; i &lt;= Math.sqrt(num); i++) {<br>            if (num % i == 0) {<br>              return false;<br>            }<br>          }<br>          return true;<br>        }<br>    )<br>}</p>
 ]]></content>
@@ -62,6 +62,8 @@
       &lt;p&gt;function shu(arr){&lt;br&gt;    return arr.filter(&lt;br&gt;        function(num) {&lt;br&gt;          if (num == 1) {&lt;br&gt;            return false;&lt;br&gt;    
     
     </summary>
+    
+      <category term="Testing" scheme="http://yoursite.com/categories/Testing/"/>
     
     
       <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
