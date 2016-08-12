@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Munachar</title>
+  <subtitle>Quick notes</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2016-08-12T06:25:20.341Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>munachar</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>postName</title>
+    <link href="http://yoursite.com/2016/08/12/postName/"/>
+    <id>http://yoursite.com/2016/08/12/postName/</id>
+    <published>2016-08-12T06:11:29.000Z</published>
+    <updated>2016-08-12T06:25:20.341Z</updated>
+    
+    <content type="html"><![CDATA[<ol>
+<li>Git安装和Github设置<br>使用Mac电脑可以直brew安装,</li>
+</ol>
+<p>brew install git         #Mac电脑使用brew安装<br>sudo apt-get install git #Ubuntu系统使用这条命令安装<br>git操作和github上SSH设置请看这篇博文</p>
+<p>使用Github Page搭建博客, 需要遵循一定的规则, 需要在github建立仓库,仓库名为Github用户.github.io, 更多详情请参考官方文档</p>
+<ol>
+<li>Node.js安装<br>mac电脑可以直接通过brew安装</li>
+</ol>
+<p>#安装命令<br>brew install node  #如果我没记错的话,最新版的node.js的包中已经集成了npm包管理工具</p>
+<p>使用以下命令验证是否安装成功<br>node -v<br>npm -v</p>
+<p>文／Andrew_liu（简书作者）<br>原文链接：<a href="http://www.jianshu.com/p/858ecf233db9" target="_blank" rel="external">http://www.jianshu.com/p/858ecf233db9</a><br>著作权归作者所有，转载请联系作者获得授权，并标注“简书作者”。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;ol&gt;
+&lt;li&gt;Git安装和Github设置&lt;br&gt;使用Mac电脑可以直brew安装,&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;brew install git         #Mac电脑使用brew安装&lt;br&gt;sudo apt-get install git #Ubuntu系统使用这条
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>AJAX的XMLHttpRequest对象使用</title>
+    <link href="http://yoursite.com/2016/05/20/AJAX%E7%9A%84XMLHttpRequest%E5%AF%B9%E8%B1%A1%E4%BD%BF%E7%94%A8/"/>
+    <id>http://yoursite.com/2016/05/20/AJAX的XMLHttpRequest对象使用/</id>
+    <published>2016-05-20T02:09:29.000Z</published>
+    <updated>2016-08-12T09:27:16.605Z</updated>
+    
+    <content type="html"><![CDATA[<p>//1 创建XHR对象<br>    var xhr = null;<br>    if(window.XMLHttpRequest){  //新IE、其它浏览器<br>        xhr = new XMLHttpRequest();<br>    }else { //老IE<br>        xhr = new ActiveXObject(‘Microsoft.XMLHTTP’);<br>    }<br>//2 监听XHR的状态改变<br>    xhr.onreadystatechange = function(){<br>      if(xhr.readyState===4){ //DONE响应消息接收完成<br>        if(xhr.status===200){<br>          console.log(‘响应接收完成且成功’);<br>          console.log(‘响应主体：’+xhr.responseText);<br>          doResponse(xhr.responseText);//调用自定义的函数，处理响应数据<br>        }else {<br>          console.log(‘响应接收完成但不成功’);<br>          console.log(‘响应状态码为：’+xhr.status);<br>        }<br>      }<br>    }<br>//3 打开连接<br>    xhr.open(‘GET’,’4_check_uname.php?uname=’+n, true);<br>//4 发送请求消息<br>    xhr.send( null );</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;//1 创建XHR对象&lt;br&gt;    var xhr = null;&lt;br&gt;    if(window.XMLHttpRequest){  //新IE、其它浏览器&lt;br&gt;        xhr = new XMLHttpRequest();&lt;br&gt;    }else { /
+    
+    </summary>
+    
+    
+      <category term="AJAX" scheme="http://yoursite.com/tags/AJAX/"/>
+    
+      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何处理信息过载</title>
+    <link href="http://yoursite.com/2016/05/04/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E4%BF%A1%E6%81%AF%E8%BF%87%E8%BD%BD/"/>
+    <id>http://yoursite.com/2016/05/04/如何处理信息过载/</id>
+    <published>2016-05-04T06:11:29.000Z</published>
+    <updated>2016-08-12T07:05:10.022Z</updated>
+    
+    <content type="html"><![CDATA[<p>一、俯瞰全景<br>用断舍离的自在力俯瞰信息输入全景<br>微信：群、订阅号、朋友圈<br>微博、日报、新闻等APP<br>书籍、杂志<br>音频<br>其他</p>
+<p>二、正本清源<br>梳理反思，及时清理对你造成困扰的信息源头。<br>以下是我的使用习惯，供参考<br>微信清退规则<br>群：没有群规，且超过一个月不曾发言<br>订阅号：未读数超 30<br>朋友圈：固定时间查阅<br>APP：关掉推送通知，关不掉就卸掉</p>
+<p>书籍<br>尽量阅读纸质书，不读杂志<br>读「元学科」相关的著作<br>阅读经典与诚意之作<br>阅读器存放的书不超过四本</p>
+<p>音频<br>只在通勤时收听</p>
+<p>社交<br>远离社交媒体<br>尽可能独立思考地输出代表作<br>有可追溯的记录平台<br>让自己变得优秀，方可与优秀的人相聚</p>
+<p>会当凌绝顶，一览众山小。当你攀爬上思想巅峰，你便知，所谓信息过载，便如山边之行云，待一一退去，方可领略真知的雄伟。</p>
+<p>作者：陈素封<br>链接：<a href="http://www.zhihu.com/question/19685050/answer/71453024" target="_blank" rel="external">http://www.zhihu.com/question/19685050/answer/71453024</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;一、俯瞰全景&lt;br&gt;用断舍离的自在力俯瞰信息输入全景&lt;br&gt;微信：群、订阅号、朋友圈&lt;br&gt;微博、日报、新闻等APP&lt;br&gt;书籍、杂志&lt;br&gt;音频&lt;br&gt;其他&lt;/p&gt;
+&lt;p&gt;二、正本清源&lt;br&gt;梳理反思，及时清理对你造成困扰的信息源头。&lt;br&gt;以下是我的使用习惯，供参考&lt;b
+    
+    </summary>
+    
+    
+      <category term="转载" scheme="http://yoursite.com/tags/%E8%BD%AC%E8%BD%BD/"/>
+    
+  </entry>
+  
+</feed>
