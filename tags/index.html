@@ -68,10 +68,12 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="AJAX,JS," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
+
+  
 
 
   <link rel="alternate" href="/atom.xml" title="Munachar" type="application/atom+xml" />
@@ -86,16 +88,16 @@
 
 
 
-<meta name="description" content="//1 创建XHR对象    var xhr = null;    if(window.XMLHttpRequest){  //新IE、其它浏览器        xhr = new XMLHttpRequest();    }else { //老IE        xhr = new ActiveXObject(‘Microsoft.XMLHTTP’);    }//2 监听XHR的状态改变">
-<meta property="og:type" content="article">
-<meta property="og:title" content="AJAX的XMLHttpRequest对象使用">
-<meta property="og:url" content="http://yoursite.com/2016/05/20/AJAX的XMLHttpRequest对象使用/index.html">
+<meta name="description" content="Everything is good in its season.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="tags">
+<meta property="og:url" content="http://yoursite.com/tags/index.html">
 <meta property="og:site_name" content="Munachar">
-<meta property="og:description" content="//1 创建XHR对象    var xhr = null;    if(window.XMLHttpRequest){  //新IE、其它浏览器        xhr = new XMLHttpRequest();    }else { //老IE        xhr = new ActiveXObject(‘Microsoft.XMLHTTP’);    }//2 监听XHR的状态改变">
-<meta property="og:updated_time" content="2016-08-12T09:32:51.055Z">
+<meta property="og:description" content="Everything is good in its season.">
+<meta property="og:updated_time" content="2016-08-12T09:34:47.397Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AJAX的XMLHttpRequest对象使用">
-<meta name="twitter:description" content="//1 创建XHR对象    var xhr = null;    if(window.XMLHttpRequest){  //新IE、其它浏览器        xhr = new XMLHttpRequest();    }else { //老IE        xhr = new ActiveXObject(‘Microsoft.XMLHTTP’);    }//2 监听XHR的状态改变">
+<meta name="twitter:title" content="tags">
+<meta name="twitter:description" content="Everything is good in its season.">
 
 
 
@@ -116,9 +118,15 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/05/20/AJAX的XMLHttpRequest对象使用/"/>
+  <link rel="canonical" href="http://yoursite.com/tags/"/>
 
-  <title> AJAX的XMLHttpRequest对象使用 | Munachar </title>
+  <title>
+  
+
+  
+    标签 | Munachar
+  
+</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -149,7 +157,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -262,157 +270,24 @@
 
   <div id="posts" class="posts-expand">
     
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
     
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                AJAX的XMLHttpRequest对象使用
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-20T10:09:29+08:00" content="2016-05-20">
-              2016-05-20
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/20/AJAX的XMLHttpRequest对象使用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/20/AJAX的XMLHttpRequest对象使用/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/05/20/AJAX的XMLHttpRequest对象使用/" class="leancloud_visitors" data-flag-title="AJAX的XMLHttpRequest对象使用">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
+      <div class="tag-cloud">
+        <div class="tag-cloud-title">
+            目前共计 3 个标签
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>//1 创建XHR对象<br>    var xhr = null;<br>    if(window.XMLHttpRequest){  //新IE、其它浏览器<br>        xhr = new XMLHttpRequest();<br>    }else { //老IE<br>        xhr = new ActiveXObject(‘Microsoft.XMLHTTP’);<br>    }<br>//2 监听XHR的状态改变<br>    xhr.onreadystatechange = function(){<br>      if(xhr.readyState===4){ //DONE响应消息接收完成<br>        if(xhr.status===200){<br>          console.log(‘响应接收完成且成功’);<br>          console.log(‘响应主体：’+xhr.responseText);<br>          doResponse(xhr.responseText);//调用自定义的函数，处理响应数据<br>        }else {<br>          console.log(‘响应接收完成但不成功’);<br>          console.log(‘响应状态码为：’+xhr.status);<br>        }<br>      }<br>    }<br>//3 打开连接<br>    xhr.open(‘GET’,’4_check_uname.php?uname=’+n, true);<br>//4 发送请求消息<br>    xhr.send( null );</p>
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <div>
-      
-        
-
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/AJAX/" rel="tag">#AJAX</a>
-          
-            <a href="/tags/JS/" rel="tag">#JS</a>
-          
+        <div class="tag-cloud-tags">
+          <a href="/tags/AJAX/" style="font-size: 12px; color: #ccc">AJAX</a> <a href="/tags/JS/" style="font-size: 12px; color: #ccc">JS</a> <a href="/tags/转载/" style="font-size: 12px; color: #ccc">转载</a>
         </div>
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/05/04/如何处理信息过载/" rel="next" title="如何处理信息过载">
-                <i class="fa fa-chevron-left"></i> 如何处理信息过载
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/08/12/postName/" rel="prev" title="postName">
-                postName <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/05/20/AJAX的XMLHttpRequest对象使用/"
-           data-title="AJAX的XMLHttpRequest对象使用" data-url="http://yoursite.com/2016/05/20/AJAX的XMLHttpRequest对象使用/">
       </div>
     
   </div>
 
+
+          </div>
+          
+
+
+          
 
         </div>
         
@@ -432,17 +307,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/author.jpg"
@@ -492,17 +358,6 @@
 
       </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <p class="post-toc-empty">此文章未包含目录</p>
-            
-          </div>
-        </section>
       
 
     </div>
@@ -606,10 +461,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
 
   
 
