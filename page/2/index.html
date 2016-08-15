@@ -283,6 +283,139 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/20/AJAX的XMLHttpRequest对象使用/" itemprop="url">
+                  AJAX的XMLHttpRequest对象使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-20T10:09:29+08:00" content="2016-05-20">
+              2016-05-20
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/20/AJAX的XMLHttpRequest对象使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/20/AJAX的XMLHttpRequest对象使用/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/20/AJAX的XMLHttpRequest对象使用/" class="leancloud_visitors" data-flag-title="AJAX的XMLHttpRequest对象使用">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<h3 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h3><pre><code>   //1 创建XHR对象
+    var xhr = null;
+    if(window.XMLHttpRequest){  //新IE、其它浏览器
+        xhr = new XMLHttpRequest();  
+    }else { //老IE
+        xhr = new ActiveXObject(&apos;Microsoft.XMLHTTP&apos;);
+    }
+//2 监听XHR的状态改变
+    xhr.onreadystatechange = function(){
+      if(xhr.readyState===4){ //DONE响应消息接收完成
+        if(xhr.status===200){
+          console.log(&apos;响应接收完成且成功&apos;);
+          console.log(&apos;响应主体：&apos;+xhr.responseText);
+          doResponse(xhr.responseText);//调用自定义的函数，处理响应数据
+        }else {
+          console.log(&apos;响应接收完成但不成功&apos;);
+          console.log(&apos;响应状态码为：&apos;+xhr.status);
+        }
+      }
+    }
+</code></pre>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/05/20/AJAX的XMLHttpRequest对象使用/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/04/如何处理信息过载/" itemprop="url">
                   如何处理信息过载
                 </a>
@@ -352,149 +485,6 @@
               阅读全文 &raquo;
             </a>
           </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/01/03/前端资源网/" itemprop="url">
-                  postName
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-03T14:11:29+08:00" content="2016-01-03">
-              2016-01-03
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/01/03/前端资源网/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/03/前端资源网/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/01/03/前端资源网/" class="leancloud_visitors" data-flag-title="postName">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Web前端资源分享：</p>
-<ul>
-<li>官方：<ul>
-<li>W3C：<a href="http://www.w3.org/" target="_blank" rel="external">http://www.w3.org/</a></li>
-<li>ECMA：<a href="http://www.ecmascript.org/" target="_blank" rel="external">http://www.ecmascript.org/</a></li>
-<li>Mozilla：<a href="https://developer.mozilla.org/zh-CN/" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/</a></li>
-</ul>
-</li>
-<li>微软提供的H5实验室：<br><a href="http://html5labs.interoperabilitybridges.com/" target="_blank" rel="external">http://html5labs.interoperabilitybridges.com/</a></li>
-<li>第三方国内：<ul>
-<li>前端网：<a href="http://www.w3cfuns.com/portal.php" target="_blank" rel="external">http://www.w3cfuns.com/portal.php</a></li>
-<li>H5基地：<a href="http://html5.360.cn/" target="_blank" rel="external">http://html5.360.cn/</a></li>
-<li>前端里：<a href="http://www.yyyweb.com" target="_blank" rel="external">http://www.yyyweb.com</a></li>
-</ul>
-</li>
-<li>国内各大公司前端团队博客：<ul>
-<li>携程：<a href="http://ued.ctrip.com/blog/" target="_blank" rel="external">http://ued.ctrip.com/blog/</a></li>
-<li>网易：<a href="http://uedc.163.com" target="_blank" rel="external">http://uedc.163.com</a></li>
-<li>腾讯：<ul>
-<li><a href="http://isux.tencent.com" target="_blank" rel="external">http://isux.tencent.com</a></li>
-<li><a href="http://www.alloyteam.com" target="_blank" rel="external">http://www.alloyteam.com</a></li>
-</ul>
-</li>
-<li>百度：<ul>
-<li><a href="http://fex.baidu.com" target="_blank" rel="external">http://fex.baidu.com</a></li>
-<li><a href="http://efe.baidu.com" target="_blank" rel="external">http://efe.baidu.com</a></li>
-<li><a href="http://mweb.baidu.com" target="_blank" rel="external">http://mweb.baidu.com</a></li>
-</ul>
-</li>
-<li>淘宝：<a href="http://ued.taobao.org/blog/" target="_blank" rel="external">http://ued.taobao.org/blog/</a></li>
-<li>360：<a href="http://www.75team.com" target="_blank" rel="external">http://www.75team.com</a></li>
-</ul>
-</li>
-</ul>
-
-          
         
       
     </div>
