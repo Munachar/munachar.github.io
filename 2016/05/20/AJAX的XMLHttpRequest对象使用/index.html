@@ -92,7 +92,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/05/20/AJAX的XMLHttpRequest对象使用/index.html">
 <meta property="og:site_name" content="Munachar">
 <meta property="og:description" content="//1 创建XHR对象    var xhr = null;    if(window.XMLHttpRequest){  //新IE、其它浏览器        xhr = new XMLHttpRequest();    }else { //老IE        xhr = new ActiveXObject(‘Microsoft.XMLHTTP’);    }//2 监听XHR的状态改变">
-<meta property="og:updated_time" content="2016-08-12T09:32:51.055Z">
+<meta property="og:updated_time" content="2016-08-15T06:13:11.373Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AJAX的XMLHttpRequest对象使用">
 <meta name="twitter:description" content="//1 创建XHR对象    var xhr = null;    if(window.XMLHttpRequest){  //新IE、其它浏览器        xhr = new XMLHttpRequest();    }else { //老IE        xhr = new ActiveXObject(‘Microsoft.XMLHTTP’);    }//2 监听XHR的状态改变">
@@ -337,7 +337,7 @@
       
 
       
-        <p>//1 创建XHR对象<br>    var xhr = null;<br>    if(window.XMLHttpRequest){  //新IE、其它浏览器<br>        xhr = new XMLHttpRequest();<br>    }else { //老IE<br>        xhr = new ActiveXObject(‘Microsoft.XMLHTTP’);<br>    }<br>//2 监听XHR的状态改变<br>    xhr.onreadystatechange = function(){<br>      if(xhr.readyState===4){ //DONE响应消息接收完成<br>        if(xhr.status===200){<br>          console.log(‘响应接收完成且成功’);<br>          console.log(‘响应主体：’+xhr.responseText);<br>          doResponse(xhr.responseText);//调用自定义的函数，处理响应数据<br>        }else {<br>          console.log(‘响应接收完成但不成功’);<br>          console.log(‘响应状态码为：’+xhr.status);<br>        }<br>      }<br>    }<br>//3 打开连接<br>    xhr.open(‘GET’,’4_check_uname.php?uname=’+n, true);<br>//4 发送请求消息<br>    xhr.send( null );</p>
+        <p>//1 创建XHR对象<br>    var xhr = null;<br>    if(window.XMLHttpRequest){  //新IE、其它浏览器<br>        xhr = new XMLHttpRequest();<br>    }else { //老IE<br>        xhr = new ActiveXObject(‘Microsoft.XMLHTTP’);<br>    }<br>//2 监听XHR的状态改变<br>    xhr.onreadystatechange = function(){<br>      if(xhr.readyState===4){ //DONE响应消息接收完成<br>        if(xhr.status===200){<br>          console.log(‘响应接收完成且成功’);<br>          console.log(‘响应主体：’+xhr.responseText);<br>          doResponse(xhr.responseText);//调用自定义的函数，处理响应数据<br>        }else {<br>          console.log(‘响应接收完成但不成功’);<br>          console.log(‘响应状态码为：’+xhr.status);<br>        }<br>      }<br>    }<br>    <a id="more"></a><br>//3 打开连接<br>    xhr.open(‘GET’,’4_check_uname.php?uname=’+n, true);<br>//4 发送请求消息<br>    xhr.send( null );</p>
 
       
     </div>

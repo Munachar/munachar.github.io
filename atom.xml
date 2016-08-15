@@ -77,14 +77,14 @@
     <link href="http://yoursite.com/2016/05/20/AJAX%E7%9A%84XMLHttpRequest%E5%AF%B9%E8%B1%A1%E4%BD%BF%E7%94%A8/"/>
     <id>http://yoursite.com/2016/05/20/AJAX的XMLHttpRequest对象使用/</id>
     <published>2016-05-20T02:09:29.000Z</published>
-    <updated>2016-08-12T09:32:51.055Z</updated>
+    <updated>2016-08-15T06:13:11.373Z</updated>
     
-    <content type="html"><![CDATA[<p>//1 创建XHR对象<br>    var xhr = null;<br>    if(window.XMLHttpRequest){  //新IE、其它浏览器<br>        xhr = new XMLHttpRequest();<br>    }else { //老IE<br>        xhr = new ActiveXObject(‘Microsoft.XMLHTTP’);<br>    }<br>//2 监听XHR的状态改变<br>    xhr.onreadystatechange = function(){<br>      if(xhr.readyState===4){ //DONE响应消息接收完成<br>        if(xhr.status===200){<br>          console.log(‘响应接收完成且成功’);<br>          console.log(‘响应主体：’+xhr.responseText);<br>          doResponse(xhr.responseText);//调用自定义的函数，处理响应数据<br>        }else {<br>          console.log(‘响应接收完成但不成功’);<br>          console.log(‘响应状态码为：’+xhr.status);<br>        }<br>      }<br>    }<br>//3 打开连接<br>    xhr.open(‘GET’,’4_check_uname.php?uname=’+n, true);<br>//4 发送请求消息<br>    xhr.send( null );</p>
+    <content type="html"><![CDATA[<p>//1 创建XHR对象<br>    var xhr = null;<br>    if(window.XMLHttpRequest){  //新IE、其它浏览器<br>        xhr = new XMLHttpRequest();<br>    }else { //老IE<br>        xhr = new ActiveXObject(‘Microsoft.XMLHTTP’);<br>    }<br>//2 监听XHR的状态改变<br>    xhr.onreadystatechange = function(){<br>      if(xhr.readyState===4){ //DONE响应消息接收完成<br>        if(xhr.status===200){<br>          console.log(‘响应接收完成且成功’);<br>          console.log(‘响应主体：’+xhr.responseText);<br>          doResponse(xhr.responseText);//调用自定义的函数，处理响应数据<br>        }else {<br>          console.log(‘响应接收完成但不成功’);<br>          console.log(‘响应状态码为：’+xhr.status);<br>        }<br>      }<br>    }<br>    <a id="more"></a><br>//3 打开连接<br>    xhr.open(‘GET’,’4_check_uname.php?uname=’+n, true);<br>//4 发送请求消息<br>    xhr.send( null );</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;//1 创建XHR对象&lt;br&gt;    var xhr = null;&lt;br&gt;    if(window.XMLHttpRequest){  //新IE、其它浏览器&lt;br&gt;        xhr = new XMLHttpRequest();&lt;br&gt;    }else { /
+      &lt;p&gt;//1 创建XHR对象&lt;br&gt;    var xhr = null;&lt;br&gt;    if(window.XMLHttpRequest){  //新IE、其它浏览器&lt;br&gt;        xhr = new XMLHttpRequest();&lt;br&gt;    }else { //老IE&lt;br&gt;        xhr = new ActiveXObject(‘Microsoft.XMLHTTP’);&lt;br&gt;    }&lt;br&gt;//2 监听XHR的状态改变&lt;br&gt;    xhr.onreadystatechange = function(){&lt;br&gt;      if(xhr.readyState===4){ //DONE响应消息接收完成&lt;br&gt;        if(xhr.status===200){&lt;br&gt;          console.log(‘响应接收完成且成功’);&lt;br&gt;          console.log(‘响应主体：’+xhr.responseText);&lt;br&gt;          doResponse(xhr.responseText);//调用自定义的函数，处理响应数据&lt;br&gt;        }else {&lt;br&gt;          console.log(‘响应接收完成但不成功’);&lt;br&gt;          console.log(‘响应状态码为：’+xhr.status);&lt;br&gt;        }&lt;br&gt;      }&lt;br&gt;    }&lt;br&gt;
     
     </summary>
     
