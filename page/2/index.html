@@ -283,139 +283,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/05/20/AJAX的XMLHttpRequest对象使用/" itemprop="url">
-                  AJAX的XMLHttpRequest对象使用
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-20T10:09:29+08:00" content="2016-05-20">
-              2016-05-20
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/20/AJAX的XMLHttpRequest对象使用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/20/AJAX的XMLHttpRequest对象使用/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/05/20/AJAX的XMLHttpRequest对象使用/" class="leancloud_visitors" data-flag-title="AJAX的XMLHttpRequest对象使用">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<h3 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h3><pre><code>   //1 创建XHR对象
-    var xhr = null;
-    if(window.XMLHttpRequest){  //新IE、其它浏览器
-        xhr = new XMLHttpRequest();  
-    }else { //老IE
-        xhr = new ActiveXObject(&apos;Microsoft.XMLHTTP&apos;);
-    }
-//2 监听XHR的状态改变
-    xhr.onreadystatechange = function(){
-      if(xhr.readyState===4){ //DONE响应消息接收完成
-        if(xhr.status===200){
-          console.log(&apos;响应接收完成且成功&apos;);
-          console.log(&apos;响应主体：&apos;+xhr.responseText);
-          doResponse(xhr.responseText);//调用自定义的函数，处理响应数据
-        }else {
-          console.log(&apos;响应接收完成但不成功&apos;);
-          console.log(&apos;响应状态码为：&apos;+xhr.status);
-        }
-      }
-    }
-</code></pre>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/05/20/AJAX的XMLHttpRequest对象使用/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/05/04/如何处理信息过载/" itemprop="url">
                   如何处理信息过载
                 </a>
@@ -485,6 +352,137 @@
               阅读全文 &raquo;
             </a>
           </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/08/12/postName/" itemprop="url">
+                  postName
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-08-12T14:11:29+08:00" content="2015-08-12">
+              2015-08-12
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/08/12/postName/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/12/postName/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2015/08/12/postName/" class="leancloud_visitors" data-flag-title="postName">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>1. Git安装和Github设置
+使用Mac电脑可以直brew安装,
+
+brew install git         #Mac电脑使用brew安装
+sudo apt-get install git #Ubuntu系统使用这条命令安装
+git操作和github上SSH设置请看这篇博文
+
+使用Github Page搭建博客, 需要遵循一定的规则, 需要在github建立仓库,仓库名为Github用户.github.io, 更多详情请参考官方文档
+
+2. Node.js安装
+mac电脑可以直接通过brew安装
+
+#安装命令
+brew install node  #如果我没记错的话,最新版的node.js的包中已经集成了npm包管理工具
+
+使用以下命令验证是否安装成功
+node -v
+npm -v
+
+文／Andrew_liu（简书作者）
+原文链接：http://www.jianshu.com/p/858ecf233db9
+著作权归作者所有，转载请联系作者获得授权，并标注“简书作者”。
+</code></pre>
+          
         
       
     </div>

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-08-12T06:25:20.341Z</updated>
+  <updated>2016-08-15T09:56:05.287Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,38 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>postName</title>
-    <link href="http://yoursite.com/2016/08/12/postName/"/>
-    <id>http://yoursite.com/2016/08/12/postName/</id>
-    <published>2016-08-12T06:11:29.000Z</published>
-    <updated>2016-08-12T06:25:20.341Z</updated>
-    
-    <content type="html"><![CDATA[<ol>
-<li>Git安装和Github设置<br>使用Mac电脑可以直brew安装,</li>
-</ol>
-<p>brew install git         #Mac电脑使用brew安装<br>sudo apt-get install git #Ubuntu系统使用这条命令安装<br>git操作和github上SSH设置请看这篇博文</p>
-<p>使用Github Page搭建博客, 需要遵循一定的规则, 需要在github建立仓库,仓库名为Github用户.github.io, 更多详情请参考官方文档</p>
-<ol>
-<li>Node.js安装<br>mac电脑可以直接通过brew安装</li>
-</ol>
-<p>#安装命令<br>brew install node  #如果我没记错的话,最新版的node.js的包中已经集成了npm包管理工具</p>
-<p>使用以下命令验证是否安装成功<br>node -v<br>npm -v</p>
-<p>文／Andrew_liu（简书作者）<br>原文链接：<a href="http://www.jianshu.com/p/858ecf233db9" target="_blank" rel="external">http://www.jianshu.com/p/858ecf233db9</a><br>著作权归作者所有，转载请联系作者获得授权，并标注“简书作者”。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;ol&gt;
-&lt;li&gt;Git安装和Github设置&lt;br&gt;使用Mac电脑可以直brew安装,&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;brew install git         #Mac电脑使用brew安装&lt;br&gt;sudo apt-get install git #Ubuntu系统使用这条
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>不用0，1，2，以及加减乘除来进行运算</title>
@@ -899,6 +867,53 @@ consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
     
     
       <category term="转载" scheme="http://yoursite.com/tags/%E8%BD%AC%E8%BD%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>postName</title>
+    <link href="http://yoursite.com/2015/08/12/postName/"/>
+    <id>http://yoursite.com/2015/08/12/postName/</id>
+    <published>2015-08-12T06:11:29.000Z</published>
+    <updated>2016-08-15T10:05:14.760Z</updated>
+    
+    <content type="html"><![CDATA[<pre><code>1. Git安装和Github设置
+使用Mac电脑可以直brew安装,
+
+brew install git         #Mac电脑使用brew安装
+sudo apt-get install git #Ubuntu系统使用这条命令安装
+git操作和github上SSH设置请看这篇博文
+
+使用Github Page搭建博客, 需要遵循一定的规则, 需要在github建立仓库,仓库名为Github用户.github.io, 更多详情请参考官方文档
+
+2. Node.js安装
+mac电脑可以直接通过brew安装
+
+#安装命令
+brew install node  #如果我没记错的话,最新版的node.js的包中已经集成了npm包管理工具
+
+使用以下命令验证是否安装成功
+node -v
+npm -v
+
+文／Andrew_liu（简书作者）
+原文链接：http://www.jianshu.com/p/858ecf233db9
+著作权归作者所有，转载请联系作者获得授权，并标注“简书作者”。
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;pre&gt;&lt;code&gt;1. Git安装和Github设置
+使用Mac电脑可以直brew安装,
+
+brew install git         #Mac电脑使用brew安装
+sudo apt-get install git #Ubuntu系统使用这条命令安装
+git操作和git
+    
+    </summary>
+    
+    
+      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
     
   </entry>
   
