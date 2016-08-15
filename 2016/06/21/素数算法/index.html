@@ -86,16 +86,34 @@
 
 
 
-<meta name="description" content="function shu(arr){    return arr.filter(        function(num) {          if (num == 1) {            return false;          }          if (num == 2) {            return true;          }          for (v">
+<meta name="description" content="找出数组中的素数例如    shu([1,2,5,9,7,8,6,13,56,48,46]) = [2, 5, 7, 13];
+function shu(arr){
+    return arr.filter(
+        function(num) {
+          if (num == 1) {
+            return false;
+          }">
 <meta property="og:type" content="article">
 <meta property="og:title" content="素数算法">
 <meta property="og:url" content="http://yoursite.com/2016/06/21/素数算法/index.html">
 <meta property="og:site_name" content="Munachar">
-<meta property="og:description" content="function shu(arr){    return arr.filter(        function(num) {          if (num == 1) {            return false;          }          if (num == 2) {            return true;          }          for (v">
-<meta property="og:updated_time" content="2016-08-12T09:49:13.815Z">
+<meta property="og:description" content="找出数组中的素数例如    shu([1,2,5,9,7,8,6,13,56,48,46]) = [2, 5, 7, 13];
+function shu(arr){
+    return arr.filter(
+        function(num) {
+          if (num == 1) {
+            return false;
+          }">
+<meta property="og:updated_time" content="2016-08-15T08:40:45.596Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="素数算法">
-<meta name="twitter:description" content="function shu(arr){    return arr.filter(        function(num) {          if (num == 1) {            return false;          }          if (num == 2) {            return true;          }          for (v">
+<meta name="twitter:description" content="找出数组中的素数例如    shu([1,2,5,9,7,8,6,13,56,48,46]) = [2, 5, 7, 13];
+function shu(arr){
+    return arr.filter(
+        function(num) {
+          if (num == 1) {
+            return false;
+          }">
 
 
 
@@ -356,8 +374,26 @@
       
 
       
-        <p>function shu(arr){<br>    return arr.filter(<br>        function(num) {<br>          if (num == 1) {<br>            return false;<br>          }<br>          if (num == 2) {<br>            return true;<br>          }<br>          for (var i = 2; i &lt;= Math.sqrt(num); i++) {<br>            if (num % i == 0) {<br>              return false;<br>            }<br>          }<br>          return true;<br>        }<br>    )<br>}</p>
-
+        <h3 id="找出数组中的素数"><a href="#找出数组中的素数" class="headerlink" title="找出数组中的素数"></a>找出数组中的素数</h3><p>例如    shu([1,2,5,9,7,8,6,13,56,48,46]) = [2, 5, 7, 13];</p>
+<pre><code>function shu(arr){
+    return arr.filter(
+        function(num) {
+          if (num == 1) {
+            return false;
+          }
+          if (num == 2) {
+            return true;
+          }
+          for (var i = 2; i &lt;= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+              return false;
+            }
+          }
+          return true;
+        }
+    )
+}
+</code></pre>
       
     </div>
 
@@ -390,16 +426,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/20/AJAX的XMLHttpRequest对象使用/" rel="next" title="AJAX的XMLHttpRequest对象使用">
-                <i class="fa fa-chevron-left"></i> AJAX的XMLHttpRequest对象使用
+              <a href="/2016/06/13/next_study/" rel="next" title="Markdown语法学习">
+                <i class="fa fa-chevron-left"></i> Markdown语法学习
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/08/12/postName/" rel="prev" title="postName">
-                postName <i class="fa fa-chevron-right"></i>
+              <a href="/2016/06/23/count方法/" rel="prev" title="面试题">
+                面试题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -472,7 +508,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -489,7 +525,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -563,7 +599,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#找出数组中的素数"><span class="nav-number">1.</span> <span class="nav-text">找出数组中的素数</span></a></li></ol></div>
             
           </div>
         </section>

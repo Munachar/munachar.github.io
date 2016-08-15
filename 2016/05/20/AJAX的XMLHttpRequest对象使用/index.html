@@ -86,16 +86,31 @@
 
 
 
-<meta name="description" content="//1 创建XHR对象    var xhr = null;    if(window.XMLHttpRequest){  //新IE、其它浏览器        xhr = new XMLHttpRequest();    }else { //老IE        xhr = new ActiveXObject(‘Microsoft.XMLHTTP’);    }//2 监听XHR的状态改变">
+<meta name="description" content="代码如下   //1 创建XHR对象
+    var xhr = null;
+    if(window.XMLHttpRequest){  //新IE、其它浏览器
+        xhr = new XMLHttpRequest();  
+    }else { //老IE
+        xhr = new ActiveXObject(&amp;apos;Microsoft.XMLHTTP&amp;apos">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AJAX的XMLHttpRequest对象使用">
 <meta property="og:url" content="http://yoursite.com/2016/05/20/AJAX的XMLHttpRequest对象使用/index.html">
 <meta property="og:site_name" content="Munachar">
-<meta property="og:description" content="//1 创建XHR对象    var xhr = null;    if(window.XMLHttpRequest){  //新IE、其它浏览器        xhr = new XMLHttpRequest();    }else { //老IE        xhr = new ActiveXObject(‘Microsoft.XMLHTTP’);    }//2 监听XHR的状态改变">
-<meta property="og:updated_time" content="2016-08-15T06:13:11.373Z">
+<meta property="og:description" content="代码如下   //1 创建XHR对象
+    var xhr = null;
+    if(window.XMLHttpRequest){  //新IE、其它浏览器
+        xhr = new XMLHttpRequest();  
+    }else { //老IE
+        xhr = new ActiveXObject(&amp;apos;Microsoft.XMLHTTP&amp;apos">
+<meta property="og:updated_time" content="2016-08-15T06:31:53.150Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AJAX的XMLHttpRequest对象使用">
-<meta name="twitter:description" content="//1 创建XHR对象    var xhr = null;    if(window.XMLHttpRequest){  //新IE、其它浏览器        xhr = new XMLHttpRequest();    }else { //老IE        xhr = new ActiveXObject(‘Microsoft.XMLHTTP’);    }//2 监听XHR的状态改变">
+<meta name="twitter:description" content="代码如下   //1 创建XHR对象
+    var xhr = null;
+    if(window.XMLHttpRequest){  //新IE、其它浏览器
+        xhr = new XMLHttpRequest();  
+    }else { //老IE
+        xhr = new ActiveXObject(&amp;apos;Microsoft.XMLHTTP&amp;apos">
 
 
 
@@ -337,7 +352,33 @@
       
 
       
-        <p>//1 创建XHR对象<br>    var xhr = null;<br>    if(window.XMLHttpRequest){  //新IE、其它浏览器<br>        xhr = new XMLHttpRequest();<br>    }else { //老IE<br>        xhr = new ActiveXObject(‘Microsoft.XMLHTTP’);<br>    }<br>//2 监听XHR的状态改变<br>    xhr.onreadystatechange = function(){<br>      if(xhr.readyState===4){ //DONE响应消息接收完成<br>        if(xhr.status===200){<br>          console.log(‘响应接收完成且成功’);<br>          console.log(‘响应主体：’+xhr.responseText);<br>          doResponse(xhr.responseText);//调用自定义的函数，处理响应数据<br>        }else {<br>          console.log(‘响应接收完成但不成功’);<br>          console.log(‘响应状态码为：’+xhr.status);<br>        }<br>      }<br>    }<br>    <a id="more"></a><br>//3 打开连接<br>    xhr.open(‘GET’,’4_check_uname.php?uname=’+n, true);<br>//4 发送请求消息<br>    xhr.send( null );</p>
+        <blockquote>
+<h3 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h3><pre><code>   //1 创建XHR对象
+    var xhr = null;
+    if(window.XMLHttpRequest){  //新IE、其它浏览器
+        xhr = new XMLHttpRequest();  
+    }else { //老IE
+        xhr = new ActiveXObject(&apos;Microsoft.XMLHTTP&apos;);
+    }
+//2 监听XHR的状态改变
+    xhr.onreadystatechange = function(){
+      if(xhr.readyState===4){ //DONE响应消息接收完成
+        if(xhr.status===200){
+          console.log(&apos;响应接收完成且成功&apos;);
+          console.log(&apos;响应主体：&apos;+xhr.responseText);
+          doResponse(xhr.responseText);//调用自定义的函数，处理响应数据
+        }else {
+          console.log(&apos;响应接收完成但不成功&apos;);
+          console.log(&apos;响应状态码为：&apos;+xhr.status);
+        }
+      }
+    }
+</code></pre><a id="more"></a>
+<pre><code>//3 打开连接
+    xhr.open(&apos;GET&apos;,&apos;test.php?uname=&apos;+n, true);
+//4 发送请求消息
+    xhr.send( null );
+</code></pre></blockquote>
 
       
     </div>
@@ -379,8 +420,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/06/21/素数算法/" rel="prev" title="素数算法">
-                素数算法 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/06/13/next_study/" rel="prev" title="Markdown语法学习">
+                Markdown语法学习 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -453,7 +494,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -470,7 +511,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -544,7 +585,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码如下"><span class="nav-number">1.</span> <span class="nav-text">代码如下</span></a></li></ol></div>
             
           </div>
         </section>

@@ -89,7 +89,7 @@
 <meta name="description" content="Everything is good in its season.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Munachar">
-<meta property="og:url" content="http://yoursite.com/categories/Testing/index.html">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="Munachar">
 <meta property="og:description" content="Everything is good in its season.">
 <meta name="twitter:card" content="summary">
@@ -115,9 +115,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/Testing/"/>
+  <link rel="canonical" href="http://yoursite.com/page/2/"/>
 
-  <title> 分类: Testing | Munachar </title>
+  <title> Munachar </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -148,7 +148,9 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -258,96 +260,253 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
+  <section id="posts" class="posts-expand">
+    
+      
 
-  <section id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        Testing
-        <small>分类</small>
-      </h2>
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/20/AJAX的XMLHttpRequest对象使用/" itemprop="url">
+                  AJAX的XMLHttpRequest对象使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-20T10:09:29+08:00" content="2016-05-20">
+              2016-05-20
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/20/AJAX的XMLHttpRequest对象使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/20/AJAX的XMLHttpRequest对象使用/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/20/AJAX的XMLHttpRequest对象使用/" class="leancloud_visitors" data-flag-title="AJAX的XMLHttpRequest对象使用">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<h3 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h3><pre><code>   //1 创建XHR对象
+    var xhr = null;
+    if(window.XMLHttpRequest){  //新IE、其它浏览器
+        xhr = new XMLHttpRequest();  
+    }else { //老IE
+        xhr = new ActiveXObject(&apos;Microsoft.XMLHTTP&apos;);
+    }
+//2 监听XHR的状态改变
+    xhr.onreadystatechange = function(){
+      if(xhr.readyState===4){ //DONE响应消息接收完成
+        if(xhr.status===200){
+          console.log(&apos;响应接收完成且成功&apos;);
+          console.log(&apos;响应主体：&apos;+xhr.responseText);
+          doResponse(xhr.responseText);//调用自定义的函数，处理响应数据
+        }else {
+          console.log(&apos;响应接收完成但不成功&apos;);
+          console.log(&apos;响应状态码为：&apos;+xhr.status);
+        }
+      }
+    }
+</code></pre>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/05/20/AJAX的XMLHttpRequest对象使用/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
     </div>
 
-    
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
 
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/06/23/面试题/" itemprop="url">
-              
-                <span itemprop="name">模板引擎、字节转换、map函数</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-06-23T20:28:10+08:00"
-              content="2016-06-23" >
-          06-23
-        </time>
-      </div>
-
-    </header>
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </article>
 
 
     
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
 
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/06/23/count方法/" itemprop="url">
-              
-                <span itemprop="name">面试题</span>
-              
-            </a>
-        
-      </h1>
+  
+  
+  
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-06-23T14:11:29+08:00"
-              content="2016-06-23" >
-          06-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/04/如何处理信息过载/" itemprop="url">
+                  如何处理信息过载
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-04T14:11:29+08:00" content="2016-05-04">
+              2016-05-04
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/04/如何处理信息过载/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/04/如何处理信息过载/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/04/如何处理信息过载/" class="leancloud_visitors" data-flag-title="如何处理信息过载">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
+      
         
-            <a class="post-title-link" href="/2016/06/21/素数算法/" itemprop="url">
-              
-                <span itemprop="name">素数算法</span>
-              
+          <h3 id="一、俯瞰全景"><a href="#一、俯瞰全景" class="headerlink" title="一、俯瞰全景"></a>一、俯瞰全景</h3><blockquote>
+<p>用断舍离的自在力俯瞰信息输入全景<br>微信：群、订阅号、朋友圈<br>微博、日报、新闻等APP<br>书籍、杂志<br>音频<br>其他</p>
+</blockquote>
+<h3 id="二、正本清源"><a href="#二、正本清源" class="headerlink" title="二、正本清源"></a>二、正本清源</h3><blockquote>
+<p>梳理反思，及时清理对你造成困扰的信息源头。<br>以下是我的使用习惯，供参考<br>微信清退规则<br>群：没有群规，且超过一个月不曾发言<br>订阅号：未读数超 30<br>朋友圈：固定时间查阅<br>APP：关掉推送通知，关不掉就卸掉<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/05/04/如何处理信息过载/#more" rel="contents">
+              阅读全文 &raquo;
             </a>
+          </div>
         
-      </h1>
+      
+    </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-06-21T18:50:59+08:00"
-              content="2016-06-21" >
-          06-21
-        </time>
-      </div>
+    <div>
+      
+    </div>
 
-    </header>
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </article>
 
 
@@ -355,6 +514,9 @@
   </section>
 
   
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
 
 
 

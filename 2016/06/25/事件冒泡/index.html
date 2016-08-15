@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="JavaScript," />
 
 
 
@@ -86,15 +86,22 @@
 
 
 
-<meta name="description" content="Everything is good in its season.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Munachar">
-<meta property="og:url" content="http://yoursite.com/categories/Testing/index.html">
+<meta name="description" content="什么是JS事件冒泡？在一个对象上触发某类事件（比如单击onclick事件），如果此对象定义了此事件的处理程序，那么此事件就会调用这个处理程序，如果没有定义此事件处理程序或者事件返回true，那么这个事件会向这个对象的父级对象传播，从里到外，直至它被处理（父级对象所有同类事件都将被激活），或者它到达了对象层次的最顶层，即document对象（有些浏览器是window）。
+
+event.stopPro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="事件冒泡">
+<meta property="og:url" content="http://yoursite.com/2016/06/25/事件冒泡/index.html">
 <meta property="og:site_name" content="Munachar">
-<meta property="og:description" content="Everything is good in its season.">
+<meta property="og:description" content="什么是JS事件冒泡？在一个对象上触发某类事件（比如单击onclick事件），如果此对象定义了此事件的处理程序，那么此事件就会调用这个处理程序，如果没有定义此事件处理程序或者事件返回true，那么这个事件会向这个对象的父级对象传播，从里到外，直至它被处理（父级对象所有同类事件都将被激活），或者它到达了对象层次的最顶层，即document对象（有些浏览器是window）。
+
+event.stopPro">
+<meta property="og:updated_time" content="2016-08-15T09:21:57.814Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Munachar">
-<meta name="twitter:description" content="Everything is good in its season.">
+<meta name="twitter:title" content="事件冒泡">
+<meta name="twitter:description" content="什么是JS事件冒泡？在一个对象上触发某类事件（比如单击onclick事件），如果此对象定义了此事件的处理程序，那么此事件就会调用这个处理程序，如果没有定义此事件处理程序或者事件返回true，那么这个事件会向这个对象的父级对象传播，从里到外，直至它被处理（父级对象所有同类事件都将被激活），或者它到达了对象层次的最顶层，即document对象（有些浏览器是window）。
+
+event.stopPro">
 
 
 
@@ -115,9 +122,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/Testing/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/06/25/事件冒泡/"/>
 
-  <title> 分类: Testing | Munachar </title>
+  <title> 事件冒泡 | Munachar </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -148,7 +155,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -259,103 +266,190 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        Testing
-        <small>分类</small>
-      </h2>
-    </div>
-
+  <div id="posts" class="posts-expand">
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/06/23/面试题/" itemprop="url">
-              
-                <span itemprop="name">模板引擎、字节转换、map函数</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-06-23T20:28:10+08:00"
-              content="2016-06-23" >
-          06-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/06/23/count方法/" itemprop="url">
-              
-                <span itemprop="name">面试题</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-06-23T14:11:29+08:00"
-              content="2016-06-23" >
-          06-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/06/21/素数算法/" itemprop="url">
-              
-                <span itemprop="name">素数算法</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-06-21T18:50:59+08:00"
-              content="2016-06-21" >
-          06-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-  </section>
 
   
+  
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                事件冒泡
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-25T20:21:05+08:00" content="2016-06-25">
+              2016-06-25
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/25/事件冒泡/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/25/事件冒泡/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/06/25/事件冒泡/" class="leancloud_visitors" data-flag-title="事件冒泡">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="什么是JS事件冒泡？"><a href="#什么是JS事件冒泡？" class="headerlink" title="什么是JS事件冒泡？"></a>什么是JS事件冒泡？</h3><p>在一个对象上触发某类事件（比如单击onclick事件），如果此对象定义了此事件的处理程序，那么此事件就会调用这个处理程序，如果没有定义此事件处理程序或者事件返回true，那么这个事件会向这个对象的父级对象传播，从里到外，直至它被处理（父级对象所有同类事件都将被激活），或者它到达了对象层次的最顶层，即document对象（有些浏览器是window）。</p>
+<ol>
+<li><p>event.stopPropagation();<br>事件处理过程中，阻止了事件冒泡，但不会阻击默认行为（它就执行了超链接的跳转）</p>
+</li>
+<li><p>return false;<br>事件处理过程中，阻止了事件冒泡，也阻止了默认行为（比如刚才它就没有执行超链接的跳转）</p>
+</li>
+<li><p>event.preventDefault();<br>如果把它放在头部A标签的click事件中点击“点击我”。<br>会发现它依次弹出：我是最里层—-&gt;我是中间层—-&gt;我是最外层，但最后却没有跳转到百度<br>它的作用是：事件处理过程中，不阻击事件冒泡，但阻击默认行为（它只执行所有弹框，却没有执行超链接跳转）</p>
+</li>
+</ol>
+<hr>
+<a id="more"></a>
+<h3 id="事件周期"><a href="#事件周期" class="headerlink" title="事件周期:"></a>事件周期:</h3><blockquote>
+<p>DOM: 3个阶段:</p>
+<blockquote>
+<ul>
+<li>捕获: 由最外层元素向内，逐级记录绑定的事件处理函数，只是记录，而不触发</li>
+<li>目标触发: 首先触发实际发生事件的元素上绑定的处理函数（目标元素: 实际发生事件的元素）</li>
+<li>冒泡: 由内层向外层依次执行各级绑定的处理函数</li>
+</ul>
+</blockquote>
+<p>鄙视:能否修改事件触发的顺序: ——能！</p>
+<pre><code>elem.addEventListener(“事件名”,函数对象,false/true);
+</code></pre><p>第三个参数: 是否在捕获阶段提前触发，<br>默认false，只能在冒泡阶段顺序触发<br>改为true，可在捕获阶段提前触发！<br>在捕获阶段提前触发的处理函数，冒泡阶段不会重复触发。<br>IE8: 2个阶段: 没有捕获！——不能修改事件触发的顺序<br>elem.attachEvent(“on事件名”,函数对象)</p>
+</blockquote>
+<h3 id="取消冒泡"><a href="#取消冒泡" class="headerlink" title="取消冒泡"></a>取消冒泡</h3><blockquote>
+<p>取消冒泡: 一般用于事件处理函数的末尾</p>
+<pre><code>DOM: e.stopPropagation();
+IE8: e.cancelBubble=true;
+</code></pre><p>兼容: </p>
+<pre><code>if(e.stopPropagation!==undefined){
+    e.stopPropagation();
+}else{
+    e.cancelBubble=true;
+}
+</code></pre><p>利用冒泡:<br>优化: 如果多个平级子元素都绑定了相同的事件处理函数，则只需要在父元素上绑定一次即可。不必反复绑定！<br>为什么: 绑定的事件处理函数越多，页面的执行效率越低。应尽量减少页面中绑定的事件处理函数个数。<br>核心问题：如何获得目标元素:</p>
+<pre><code>var target=e.target||e.srcElement
+</code></pre></blockquote>
+<h3 id="DOM-IE8"><a href="#DOM-IE8" class="headerlink" title="DOM IE8"></a>DOM IE8</h3><blockquote>
+<p>取消事件: 在事件处理函数执行过程中，发生了异常或错误，希望事件不再继续触发。<br>如何取消:<br>   js动态绑定事件处理函数: </p>
+<pre><code>DOM: e.preventDefault();
+IE8: e.returnValue=false;
+</code></pre><p>兼容: </p>
+<pre><code>if(e.preventDefault!==undefined){
+    e.preventDefault();
+}else{
+    e.returnValue=false;
+} 
+</code></pre></blockquote>
+<p>参考网址：<a href="http://www.jb51.net/article/32792.htm" target="_blank" rel="external">事件冒泡</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/23/面试题/" rel="next" title="模板引擎、字节转换、map函数">
+                <i class="fa fa-chevron-left"></i> 模板引擎、字节转换、map函数
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/28/hexo常用命令/" rel="prev" title="hexo 常用命令">
+                hexo 常用命令 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -363,6 +457,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/06/25/事件冒泡/"
+           data-title="事件冒泡" data-url="http://yoursite.com/2016/06/25/事件冒泡/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -382,8 +484,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/author.jpg"
@@ -478,6 +589,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是JS事件冒泡？"><span class="nav-number">1.</span> <span class="nav-text">什么是JS事件冒泡？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件周期"><span class="nav-number">2.</span> <span class="nav-text">事件周期:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#取消冒泡"><span class="nav-number">3.</span> <span class="nav-text">取消冒泡</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DOM-IE8"><span class="nav-number">4.</span> <span class="nav-text">DOM IE8</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -581,6 +703,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 

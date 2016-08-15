@@ -48,18 +48,506 @@
   </entry>
   
   <entry>
-    <title>素数算法</title>
-    <link href="http://yoursite.com/2016/06/21/%E7%B4%A0%E6%95%B0%E7%AE%97%E6%B3%95/"/>
-    <id>http://yoursite.com/2016/06/21/素数算法/</id>
-    <published>2016-06-21T10:50:59.000Z</published>
-    <updated>2016-08-12T09:49:13.815Z</updated>
+    <title>不用0，1，2，以及加减乘除来进行运算</title>
+    <link href="http://yoursite.com/2016/07/03/%E7%A8%8B%E5%BA%8F%E8%BF%90%E7%AE%97/"/>
+    <id>http://yoursite.com/2016/07/03/程序运算/</id>
+    <published>2016-07-03T08:33:55.000Z</published>
+    <updated>2016-08-15T09:56:05.287Z</updated>
     
-    <content type="html"><![CDATA[<p>function shu(arr){<br>    return arr.filter(<br>        function(num) {<br>          if (num == 1) {<br>            return false;<br>          }<br>          if (num == 2) {<br>            return true;<br>          }<br>          for (var i = 2; i &lt;= Math.sqrt(num); i++) {<br>            if (num % i == 0) {<br>              return false;<br>            }<br>          }<br>          return true;<br>        }<br>    )<br>}</p>
+    <content type="html"><![CDATA[<p>很久很久以前，有个叫阿隆佐·邱奇，发现只需要用函数，就可以用计算机实现运算，而不需要0、1、2、3这些数字和+、-、*、/这些符号。</p>
+<p>JavaScript支持函数，所以可以通过JavaScript用函数来写这些计算。来试试：</p>
+<pre><code>&apos;use strict&apos;;
+// 定义数字0:
+var zero = function (f) {
+    return function (x) {
+        return x;
+    }
+};
+// 定义数字1:
+var one = function (f) {
+    return function (x) {
+        return f(x);
+    }
+};
+// 定义加法:
+function add(n, m) {
+    return function (f) {
+        return function (x) {
+            return m(f)(n(f)(x));
+        }
+    }
+}
+// 计算数字2 = 1 + 1:
+var two = add(one, one);
+// 计算数字3 = 1 + 2:
+var three = add(one, two);
+// 计算数字5 = 2 + 3:
+var five = add(two, three);
+
+// 你说它是3就是3，你说它是5就是5，你怎么证明？
+// 给3传一个函数,会打印3次:
+(three(function () {
+    console.log(&apos;print 3 times&apos;);
+}))();
+
+// 给5传一个函数,会打印5次:
+(five(function () {
+    console.log(&apos;print 5 times&apos;);
+}))();
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;很久很久以前，有个叫阿隆佐·邱奇，发现只需要用函数，就可以用计算机实现运算，而不需要0、1、2、3这些数字和+、-、*、/这些符号。&lt;/p&gt;
+&lt;p&gt;JavaScript支持函数，所以可以通过JavaScript用函数来写这些计算。来试试：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;a
+    
+    </summary>
+    
+    
+      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>aplly&amp;call方法的使用</title>
+    <link href="http://yoursite.com/2016/07/02/aplly&amp;call%E6%96%B9%E6%B3%95%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>http://yoursite.com/2016/07/02/aplly&amp;call方法的使用/</id>
+    <published>2016-07-02T02:25:02.000Z</published>
+    <updated>2016-08-15T09:51:18.048Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h4><p>在一个对象中绑定函数，称为这个对象的方法。<br>在JavaScript中，对象的定义是这样的：</p>
+<pre><code>var xiaoming = {
+    name: ‘小明’,
+    birth: 1990
+};
+</code></pre><p>但是，如果我们给xiaoming绑定一个函数，就可以做更多的事情。比如，写个age()方法，返回xiaoming的年龄：</p>
+<pre><code>var xiaoming = {
+    name: ‘小明’,
+    birth: 1990,
+    age: function () {
+    var y = new Date().getFullYear();
+        return y - this.birth;
+    }
+};
+xiaoming.age; // function xiaoming.age()
+xiaoming.age(); // 今年调用是25,明年调用就变成26了
+</code></pre><p>绑定到对象上的函数称为方法，和普通函数也没啥区别，但是它在内部使用了一个this关键字，这个东东是什么？</p>
+<p>在一个方法内部，this是一个特殊变量，它始终指向当前对象，也就是xiaoming这个变量。所以，this.birth可以拿到xiaoming的birth属性。<br><a id="more"></a><br>让我们拆开写：</p>
+<pre><code>function getAge() {
+    var y = new Date().getFullYear();
+r    eturn y - this.birth;
+}
+
+var xiaoming = {
+    name: ‘小明’,
+    birth: 1990,
+    age: getAge
+};
+xiaoming.age(); // 25, 正常结果
+getAge(); // NaN
+</code></pre><p>单独调用函数getAge()怎么返回了NaN？请注意，我们已经进入到了JavaScript的一个大坑里。</p>
+<p>JavaScript的函数内部如果调用了this，那么这个this到底指向谁？</p>
+<p>答案是，视情况而定！</p>
+<p>如果以对象的方法形式调用，比如xiaoming.age()，该函数的this指向被调用的对象，也就是xiaoming，这是符合我们预期的。</p>
+<p>如果单独调用函数，比如getAge()，此时，该函数的this指向全局对象，也就是window。</p>
+<p>坑爹啊！</p>
+<p>更坑爹的是，如果这么写：</p>
+<pre><code>var fn = xiaoming.age; // 先拿到xiaoming的age函数
+fn(); // NaN
+</code></pre><p>也是不行的！要保证this指向正确，必须用obj.xxx()的形式调用！</p>
+<p>由于这是一个巨大的设计错误，要想纠正可没那么简单。ECMA决定，在strict模式下让函数的this指向undefined，因此，在strict模式下，你会得到一个错误：</p>
+<pre><code>‘use strict’;
+
+var xiaoming = {
+    name: ‘小明’,
+    birth: 1990,
+    age: function () {
+        var y = new Date().getFullYear();
+        return y - this.birth;
+    }
+};
+var fn = xiaoming.age;
+fn(); // Uncaught TypeError: Cannot read property ‘birth’ of undefined
+</code></pre><p>这个决定只是让错误及时暴露出来，并没有解决this应该指向的正确位置。</p>
+<p>有些时候，喜欢重构的你把方法重构了一下：</p>
+<pre><code>‘use strict’;
+
+var xiaoming = {
+    name: ‘小明’,
+    birth: 1990,
+    age: function () {
+    function getAgeFromBirth() {
+        var y = new Date().getFullYear();
+        return y - this.birth;
+    }
+    return getAgeFromBirth();
+    }
+};
+xiaoming.age(); // Uncaught TypeError: Cannot read property ‘birth’ of undefined
+</code></pre><p>结果又报错了！原因是this指针只在age方法的函数内指向xiaoming，在函数内部定义的函数，this又指向undefined了！（在非strict模式下，它重新指向全局对象window！）</p>
+<p>修复的办法也不是没有，我们用一个that变量首先捕获this：</p>
+<pre><code>‘use strict’;
+
+var xiaoming = {
+    name: ‘小明’,
+    birth: 1990,
+    age: function () {
+        var that = this; // 在方法内部一开始就捕获this
+        function getAgeFromBirth() {
+            var y = new Date().getFullYear();
+            return y - that.birth; // 用that而不是this
+        }
+        return getAgeFromBirth();
+    }
+};
+xiaoming.age(); // 25
+</code></pre><p>用var that = this;，你就可以放心地在方法内部定义其他函数，而不是把所有语句都堆到一个方法中。</p>
+<h4 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h4><p>虽然在一个独立的函数调用中，根据是否是strict模式，this指向undefined或window，不过，我们还是可以控制this的指向的！</p>
+<p>要指定函数的this指向哪个对象，可以用函数本身的apply方法，它接收两个参数，第一个参数就是需要绑定的this变量，第二个参数是Array，表示函数本身的参数。</p>
+<p>用apply修复getAge()调用：</p>
+<pre><code>function getAge() {
+    var y = new Date().getFullYear();
+    return y - this.birth;
+}
+
+var xiaoming = {
+    name: ‘小明’,
+    birth: 1990,
+    age: getAge
+};
+xiaoming.age(); // 25
+getAge.apply(xiaoming, []); // 25, this指向xiaoming, 参数为空
+</code></pre><p>另一个与apply()类似的方法是call()，唯一区别是：</p>
+<p>apply()把参数打包成Array再传入；</p>
+<p>call()把参数按顺序传入。</p>
+<p>比如调用Math.max(3, 5, 4)，分别用apply()和call()实现如下：</p>
+<p>Math.max.apply(null, [3, 5, 4]); // 5<br>Math.max.call(null, 3, 5, 4); // 5<br>对普通函数调用，我们通常把this绑定为null。</p>
+<h4 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h4><p>利用apply()，我们还可以动态改变函数的行为。</p>
+<p>JavaScript的所有对象都是动态的，即使内置的函数，我们也可以重新指向新的函数。</p>
+<p>现在假定我们想统计一下代码一共调用了多少次parseInt()，可以把所有的调用都找出来，然后手动加上count += 1，不过这样做太傻了。最佳方案是用我们自己的函数替换掉默认的parseInt()：</p>
+<pre><code>var count = 0;
+var oldParseInt = parseInt; // 保存原函数
+
+window.parseInt = function () {
+count += 1;
+return oldParseInt.apply(null, arguments); // 调用原函数
+};
+
+// 测试:
+parseInt(‘10’);
+parseInt(‘20’);
+parseInt(‘30’);
+count; // 3
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;对象&quot;&gt;&lt;a href=&quot;#对象&quot; class=&quot;headerlink&quot; title=&quot;对象&quot;&gt;&lt;/a&gt;对象&lt;/h4&gt;&lt;p&gt;在一个对象中绑定函数，称为这个对象的方法。&lt;br&gt;在JavaScript中，对象的定义是这样的：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var xiaoming = {
+    name: ‘小明’,
+    birth: 1990
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;但是，如果我们给xiaoming绑定一个函数，就可以做更多的事情。比如，写个age()方法，返回xiaoming的年龄：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var xiaoming = {
+    name: ‘小明’,
+    birth: 1990,
+    age: function () {
+    var y = new Date().getFullYear();
+        return y - this.birth;
+    }
+};
+xiaoming.age; // function xiaoming.age()
+xiaoming.age(); // 今年调用是25,明年调用就变成26了
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;绑定到对象上的函数称为方法，和普通函数也没啥区别，但是它在内部使用了一个this关键字，这个东东是什么？&lt;/p&gt;
+&lt;p&gt;在一个方法内部，this是一个特殊变量，它始终指向当前对象，也就是xiaoming这个变量。所以，this.birth可以拿到xiaoming的birth属性。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>清除浮动</title>
+    <link href="http://yoursite.com/2016/07/01/%E6%B8%85%E6%A5%9A%E6%B5%AE%E5%8A%A8/"/>
+    <id>http://yoursite.com/2016/07/01/清楚浮动/</id>
+    <published>2016-07-01T07:01:28.000Z</published>
+    <updated>2016-08-15T09:37:02.416Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h4><pre><code>.order_con:after{
+    content: ‘.’;
+    display: block;
+    visibility: hidden;
+    width: 0px;
+    height: 0px;
+    clear: both;
+}
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;清除浮动&quot;&gt;&lt;a href=&quot;#清除浮动&quot; class=&quot;headerlink&quot; title=&quot;清除浮动&quot;&gt;&lt;/a&gt;清除浮动&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;.order_con:after{
+    content: ‘.’;
+    display: block
+    
+    </summary>
+    
+    
+      <category term="CSS" scheme="http://yoursite.com/tags/CSS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo 常用命令</title>
+    <link href="http://yoursite.com/2016/06/28/hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"/>
+    <id>http://yoursite.com/2016/06/28/hexo常用命令/</id>
+    <published>2016-06-28T01:01:22.000Z</published>
+    <updated>2016-08-15T09:26:50.807Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="常用部署步骤"><a href="#常用部署步骤" class="headerlink" title="常用部署步骤"></a>常用部署步骤</h2><blockquote>
+<p>每次部署的步骤，可按以下三步来进行。</p>
+<pre><code>hexo clean
+hexo generate
+hexo deploy
+</code></pre></blockquote>
+<h6 id="一些常用命令："><a href="#一些常用命令：" class="headerlink" title="一些常用命令："></a>一些常用命令：</h6><pre><code>hexo new”postName” #新建文章
+
+hexo new page”pageName” #新建页面
+
+hexo generate #生成静态页面至public目录
+
+hexo server #开启预览访问端口（默认端口4000，’ctrl + c’关闭server）
+
+hexo deploy #将.deploy目录部署到GitHub
+
+hexo help # 查看帮助
+
+hexo version #查看Hexo的版本
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;常用部署步骤&quot;&gt;&lt;a href=&quot;#常用部署步骤&quot; class=&quot;headerlink&quot; title=&quot;常用部署步骤&quot;&gt;&lt;/a&gt;常用部署步骤&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;每次部署的步骤，可按以下三步来进行。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;hexo cl
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>事件冒泡</title>
+    <link href="http://yoursite.com/2016/06/25/%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1/"/>
+    <id>http://yoursite.com/2016/06/25/事件冒泡/</id>
+    <published>2016-06-25T12:21:05.000Z</published>
+    <updated>2016-08-15T09:21:57.814Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="什么是JS事件冒泡？"><a href="#什么是JS事件冒泡？" class="headerlink" title="什么是JS事件冒泡？"></a>什么是JS事件冒泡？</h3><p>在一个对象上触发某类事件（比如单击onclick事件），如果此对象定义了此事件的处理程序，那么此事件就会调用这个处理程序，如果没有定义此事件处理程序或者事件返回true，那么这个事件会向这个对象的父级对象传播，从里到外，直至它被处理（父级对象所有同类事件都将被激活），或者它到达了对象层次的最顶层，即document对象（有些浏览器是window）。</p>
+<ol>
+<li><p>event.stopPropagation();<br>事件处理过程中，阻止了事件冒泡，但不会阻击默认行为（它就执行了超链接的跳转）</p>
+</li>
+<li><p>return false;<br>事件处理过程中，阻止了事件冒泡，也阻止了默认行为（比如刚才它就没有执行超链接的跳转）</p>
+</li>
+<li><p>event.preventDefault();<br>如果把它放在头部A标签的click事件中点击“点击我”。<br>会发现它依次弹出：我是最里层—-&gt;我是中间层—-&gt;我是最外层，但最后却没有跳转到百度<br>它的作用是：事件处理过程中，不阻击事件冒泡，但阻击默认行为（它只执行所有弹框，却没有执行超链接跳转）</p>
+</li>
+</ol>
+<hr>
+<a id="more"></a>
+<h3 id="事件周期"><a href="#事件周期" class="headerlink" title="事件周期:"></a>事件周期:</h3><blockquote>
+<p>DOM: 3个阶段:</p>
+<blockquote>
+<ul>
+<li>捕获: 由最外层元素向内，逐级记录绑定的事件处理函数，只是记录，而不触发</li>
+<li>目标触发: 首先触发实际发生事件的元素上绑定的处理函数（目标元素: 实际发生事件的元素）</li>
+<li>冒泡: 由内层向外层依次执行各级绑定的处理函数</li>
+</ul>
+</blockquote>
+<p>鄙视:能否修改事件触发的顺序: ——能！</p>
+<pre><code>elem.addEventListener(“事件名”,函数对象,false/true);
+</code></pre><p>第三个参数: 是否在捕获阶段提前触发，<br>默认false，只能在冒泡阶段顺序触发<br>改为true，可在捕获阶段提前触发！<br>在捕获阶段提前触发的处理函数，冒泡阶段不会重复触发。<br>IE8: 2个阶段: 没有捕获！——不能修改事件触发的顺序<br>elem.attachEvent(“on事件名”,函数对象)</p>
+</blockquote>
+<h3 id="取消冒泡"><a href="#取消冒泡" class="headerlink" title="取消冒泡"></a>取消冒泡</h3><blockquote>
+<p>取消冒泡: 一般用于事件处理函数的末尾</p>
+<pre><code>DOM: e.stopPropagation();
+IE8: e.cancelBubble=true;
+</code></pre><p>兼容: </p>
+<pre><code>if(e.stopPropagation!==undefined){
+    e.stopPropagation();
+}else{
+    e.cancelBubble=true;
+}
+</code></pre><p>利用冒泡:<br>优化: 如果多个平级子元素都绑定了相同的事件处理函数，则只需要在父元素上绑定一次即可。不必反复绑定！<br>为什么: 绑定的事件处理函数越多，页面的执行效率越低。应尽量减少页面中绑定的事件处理函数个数。<br>核心问题：如何获得目标元素:</p>
+<pre><code>var target=e.target||e.srcElement
+</code></pre></blockquote>
+<h3 id="DOM-IE8"><a href="#DOM-IE8" class="headerlink" title="DOM IE8"></a>DOM IE8</h3><blockquote>
+<p>取消事件: 在事件处理函数执行过程中，发生了异常或错误，希望事件不再继续触发。<br>如何取消:<br>   js动态绑定事件处理函数: </p>
+<pre><code>DOM: e.preventDefault();
+IE8: e.returnValue=false;
+</code></pre><p>兼容: </p>
+<pre><code>if(e.preventDefault!==undefined){
+    e.preventDefault();
+}else{
+    e.returnValue=false;
+} 
+</code></pre></blockquote>
+<p>参考网址：<a href="http://www.jb51.net/article/32792.htm" target="_blank" rel="external">事件冒泡</a></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;function shu(arr){&lt;br&gt;    return arr.filter(&lt;br&gt;        function(num) {&lt;br&gt;          if (num == 1) {&lt;br&gt;            return false;&lt;br&gt;    
+      &lt;h3 id=&quot;什么是JS事件冒泡？&quot;&gt;&lt;a href=&quot;#什么是JS事件冒泡？&quot; class=&quot;headerlink&quot; title=&quot;什么是JS事件冒泡？&quot;&gt;&lt;/a&gt;什么是JS事件冒泡？&lt;/h3&gt;&lt;p&gt;在一个对象上触发某类事件（比如单击onclick事件），如果此对象定义了此事件的处理程序，那么此事件就会调用这个处理程序，如果没有定义此事件处理程序或者事件返回true，那么这个事件会向这个对象的父级对象传播，从里到外，直至它被处理（父级对象所有同类事件都将被激活），或者它到达了对象层次的最顶层，即document对象（有些浏览器是window）。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;event.stopPropagation();&lt;br&gt;事件处理过程中，阻止了事件冒泡，但不会阻击默认行为（它就执行了超链接的跳转）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;return false;&lt;br&gt;事件处理过程中，阻止了事件冒泡，也阻止了默认行为（比如刚才它就没有执行超链接的跳转）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;event.preventDefault();&lt;br&gt;如果把它放在头部A标签的click事件中点击“点击我”。&lt;br&gt;会发现它依次弹出：我是最里层—-&amp;gt;我是中间层—-&amp;gt;我是最外层，但最后却没有跳转到百度&lt;br&gt;它的作用是：事件处理过程中，不阻击事件冒泡，但阻击默认行为（它只执行所有弹框，却没有执行超链接跳转）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>模板引擎、字节转换、map函数</title>
+    <link href="http://yoursite.com/2016/06/23/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    <id>http://yoursite.com/2016/06/23/面试题/</id>
+    <published>2016-06-23T12:28:10.000Z</published>
+    <updated>2016-08-15T08:52:28.605Z</updated>
+    
+    <content type="html"><![CDATA[<h5 id="1-模板引擎"><a href="#1-模板引擎" class="headerlink" title="1. 模板引擎"></a>1. 模板引擎</h5><pre><code>var reg = /\$\{[a-zA-Z]+\}/g;
+var tpl = &quot;hello ${who}!&quot;;
+var obj = {who:&quot;world&quot;};
+function template(tpl,obj){
+        var s = reg.exec(tpl);
+        var s1 = s[0].slice(2,-1);
+        document.write(tpl.replace(reg,obj[s1]));
+    }
+    //template(tpl,obj);
+    template(&apos;Hello,${name}&apos;,{name:&quot;hedahang&quot;});
+</code></pre><a id="more"></a>
+<h5 id="2-字节转换"><a href="#2-字节转换" class="headerlink" title="2. 字节转换"></a>2. 字节转换</h5><pre><code>&lt;pre&gt;function bytesToSize(bytes) {
+    if (bytes === 0) return &apos;0 B&apos;;
+    var k = 1024,
+            sizes = [&apos;B&apos;, &apos;KB&apos;, &apos;MB&apos;, &apos;GB&apos;, &apos;TB&apos;, &apos;PB&apos;, &apos;EB&apos;, &apos;ZB&apos;, &apos;YB&apos;],
+            i = Math.floor(Math.log(bytes) / Math.log(k));
+    return (bytes / Math.pow(k, i)).toPrecision(3) + &apos; &apos; + sizes[i];
+}
+console.log( bytesToSize(12345));&lt;/pre&gt;
+</code></pre><h5 id="3-map函数"><a href="#3-map函数" class="headerlink" title="3. map函数"></a>3. map函数</h5><pre><code>&lt;pre&gt;function map(arr,fun){
+    var array = [];
+    for(var i = 0;i&lt;arr.length;i++){
+        if( i == 0){
+            array[i] = fun(0,arr[i]);
+        }else{
+            array[i] = fun(arr[i-1],arr[i])
+        }
+    console.log(array);
+    }
+}
+map([1,2,3,4,5],function(o,i){return o + i;})&lt;/pre&gt;
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h5 id=&quot;1-模板引擎&quot;&gt;&lt;a href=&quot;#1-模板引擎&quot; class=&quot;headerlink&quot; title=&quot;1. 模板引擎&quot;&gt;&lt;/a&gt;1. 模板引擎&lt;/h5&gt;&lt;pre&gt;&lt;code&gt;var reg = /\$\{[a-zA-Z]+\}/g;
+var tpl = &amp;quot;hello ${who}!&amp;quot;;
+var obj = {who:&amp;quot;world&amp;quot;};
+function template(tpl,obj){
+        var s = reg.exec(tpl);
+        var s1 = s[0].slice(2,-1);
+        document.write(tpl.replace(reg,obj[s1]));
+    }
+    //template(tpl,obj);
+    template(&amp;apos;Hello,${name}&amp;apos;,{name:&amp;quot;hedahang&amp;quot;});
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+      <category term="Testing" scheme="http://yoursite.com/categories/Testing/"/>
+    
+    
+      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
+    
+      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>面试题</title>
+    <link href="http://yoursite.com/2016/06/23/count%E6%96%B9%E6%B3%95/"/>
+    <id>http://yoursite.com/2016/06/23/count方法/</id>
+    <published>2016-06-23T06:11:29.000Z</published>
+    <updated>2016-08-15T08:46:23.045Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="count方法"><a href="#count方法" class="headerlink" title="count方法"></a>count方法</h3><p>封装一个count方法，能实现如此调用：count(a)(b)(c)(d)(e)… 并且返回的值为参数连乘的结果，即abcde*…。如count(1)(3)(7) 得到21</p>
+<pre><code>function count(x){
+    var fn = function(y){
+        return count(x*y);
+    }
+    fn.toString = function(){
+        return x;
+    };
+    return fn;
+};
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;count方法&quot;&gt;&lt;a href=&quot;#count方法&quot; class=&quot;headerlink&quot; title=&quot;count方法&quot;&gt;&lt;/a&gt;count方法&lt;/h3&gt;&lt;p&gt;封装一个count方法，能实现如此调用：count(a)(b)(c)(d)(e)… 并且返回的值为参
+    
+    </summary>
+    
+      <category term="Testing" scheme="http://yoursite.com/categories/Testing/"/>
+    
+    
+      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
+    
+      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>素数算法</title>
+    <link href="http://yoursite.com/2016/06/21/%E7%B4%A0%E6%95%B0%E7%AE%97%E6%B3%95/"/>
+    <id>http://yoursite.com/2016/06/21/素数算法/</id>
+    <published>2016-06-21T10:50:59.000Z</published>
+    <updated>2016-08-15T08:40:45.596Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="找出数组中的素数"><a href="#找出数组中的素数" class="headerlink" title="找出数组中的素数"></a>找出数组中的素数</h3><p>例如    shu([1,2,5,9,7,8,6,13,56,48,46]) = [2, 5, 7, 13];</p>
+<pre><code>function shu(arr){
+    return arr.filter(
+        function(num) {
+          if (num == 1) {
+            return false;
+          }
+          if (num == 2) {
+            return true;
+          }
+          for (var i = 2; i &lt;= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+              return false;
+            }
+          }
+          return true;
+        }
+    )
+}
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;找出数组中的素数&quot;&gt;&lt;a href=&quot;#找出数组中的素数&quot; class=&quot;headerlink&quot; title=&quot;找出数组中的素数&quot;&gt;&lt;/a&gt;找出数组中的素数&lt;/h3&gt;&lt;p&gt;例如    shu([1,2,5,9,7,8,6,13,56,48,46]) = [2, 5
     
     </summary>
     
@@ -73,18 +561,298 @@
   </entry>
   
   <entry>
-    <title>AJAX的XMLHttpRequest对象使用</title>
-    <link href="http://yoursite.com/2016/05/20/AJAX%E7%9A%84XMLHttpRequest%E5%AF%B9%E8%B1%A1%E4%BD%BF%E7%94%A8/"/>
-    <id>http://yoursite.com/2016/05/20/AJAX的XMLHttpRequest对象使用/</id>
-    <published>2016-05-20T02:09:29.000Z</published>
-    <updated>2016-08-15T06:13:11.373Z</updated>
+    <title>Markdown语法学习</title>
+    <link href="http://yoursite.com/2016/06/13/next_study/"/>
+    <id>http://yoursite.com/2016/06/13/next_study/</id>
+    <published>2016-06-13T06:15:33.000Z</published>
+    <updated>2016-08-15T09:00:07.629Z</updated>
     
-    <content type="html"><![CDATA[<p>//1 创建XHR对象<br>    var xhr = null;<br>    if(window.XMLHttpRequest){  //新IE、其它浏览器<br>        xhr = new XMLHttpRequest();<br>    }else { //老IE<br>        xhr = new ActiveXObject(‘Microsoft.XMLHTTP’);<br>    }<br>//2 监听XHR的状态改变<br>    xhr.onreadystatechange = function(){<br>      if(xhr.readyState===4){ //DONE响应消息接收完成<br>        if(xhr.status===200){<br>          console.log(‘响应接收完成且成功’);<br>          console.log(‘响应主体：’+xhr.responseText);<br>          doResponse(xhr.responseText);//调用自定义的函数，处理响应数据<br>        }else {<br>          console.log(‘响应接收完成但不成功’);<br>          console.log(‘响应状态码为：’+xhr.status);<br>        }<br>      }<br>    }<br>    <a id="more"></a><br>//3 打开连接<br>    xhr.open(‘GET’,’4_check_uname.php?uname=’+n, true);<br>//4 发送请求消息<br>    xhr.send( null );</p>
+    <content type="html"><![CDATA[<h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><pre><code># 这是 H1 #
+
+## 这是 H2 ##
+
+### 这是 H3 ######
+</code></pre><h3 id="引用块"><a href="#引用块" class="headerlink" title="引用块"></a>引用块</h3><pre><code>&gt;This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+&gt;&gt;Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+&gt; 
+&gt; 1.   这是第一行列表项。
+&gt; 2.   这是第二行列表项。
+&gt; 
+&gt; 给出一些例子代码：
+&gt; 
+&gt;     return shell_exec(&quot;echo $input | $markdown_script&quot;);
+</code></pre><blockquote>
+<p>This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,<br>consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.</p>
+<blockquote>
+<p>Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.</p>
+</blockquote>
+<ol>
+<li>这是第一行列表项。</li>
+<li>这是第二行列表项。</li>
+</ol>
+<p>给出一些例子代码：</p>
+<pre><code>return shell_exec(&quot;echo $input | $markdown_script&quot;);
+</code></pre></blockquote>
+<a id="more"></a>
+<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><pre><code>&gt;&gt; * Red
+* Green
+* Blue
+&gt;&gt; + Tom
++ Jack 
++ Jerry
+&gt;&gt; + 张三丰
++ 张翠山
++ 张无忌
+&gt; 有序列表 1.
+&gt;&gt; 1.  Bird
+2.  McHale
+3.  Parish
+
+&gt; 1.  This is a list item with two paragraphs. Lorem ipsum dolor
+    sit amet, consectetuer adipiscing elit. Aliquam hendrerit
+    mi posuere lectus.
+
+&gt;   Vestibulum enim wisi, viverra nec, fringilla in, laoreet
+    vitae, risus. Donec sit amet nisl. Aliquam semper ipsum
+    sit amet velit.
+
+&gt; 2.  Suspendisse id sem consectetuer libero luctus adipiscing.
+1986\. What a great season.
+</code></pre><blockquote>
+<p>无序列表 *,+,-</p>
+<blockquote>
+<ul>
+<li>Red</li>
+<li>Green</li>
+<li>Blue</li>
+</ul>
+<ul>
+<li>Tom</li>
+<li>Jack </li>
+<li>Jerry</li>
+<li>张三丰</li>
+<li>张翠山</li>
+<li>张无忌<br>有序列表 1.</li>
+</ul>
+<ol>
+<li>Bird</li>
+<li>McHale</li>
+<li>Parish</li>
+</ol>
+</blockquote>
+<ol>
+<li><p>This is a list item with two paragraphs. Lorem ipsum dolor<br>sit amet, consectetuer adipiscing elit. Aliquam hendrerit<br>mi posuere lectus.</p>
+<p>Vestibulum enim wisi, viverra nec, fringilla in, laoreet<br>vitae, risus. Donec sit amet nisl. Aliquam semper ipsum<br>sit amet velit.</p>
+</li>
+<li><p>Suspendisse id sem consectetuer libero luctus adipiscing.<br>1986. What a great season.</p>
+</li>
+</ol>
+</blockquote>
+<h3 id="代码区块"><a href="#代码区块" class="headerlink" title="代码区块"></a>代码区块</h3><p>这是一个普通的段落：</p>
+<pre><code>这是一个代码区块
+&lt;div class=&quot;footer&quot;&gt;
+    &amp;copy; 2004 Foo Corporation
+&lt;/div&gt;
+</code></pre><h3 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h3><p>你可以在一行中用三个以上的星号、减号、底线来建立一个分隔线，行内不能有其他东西。你也可以在星号或是减号中间插入空格。下面每种写法都可以建立分隔线：</p>
+
+<pre><code>* * *
+
+***
+
+*****
+
+- - -
+
+---------------------------------------
+</code></pre><hr>
+
+<p></p><h3>区段元素</h3><p></p>
+<blockquote>
+<h4 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h4><p>Markdown 支持两种形式的链接语法： 行内式和参考式两种形式。<br>不管是哪一种，链接文字都是用 [方括号] 来标记。<br>要建立一个行内式的链接，只要在方块括号后面紧接着圆括号并插入网址链接即可，如果你还想要加上链接的 title 文字，只要在网址后面，用双引号把 title 文字包起来即可，例如：</p>
+
+<pre><code>This is [an example](http://example.com/ &quot;Title&quot;) inline link.
+
+[This link](http://example.net/) has no title attribute.
+</code></pre><p>会产生<br>This is <a href="https://munachar.github.io/404.html" title="Title" target="_blank" rel="external">an example</a> inline link.</p>
+<p><a href="http://www.baidu.com/" target="_blank" rel="external">This link</a> has no title attribute.<br>下面是一个参考式链接的范例：</p>
+<pre><code>I get 10 times more traffic from [Google] [1] than from[Yahoo] [2] or [MSN] [3].
+
+    [1]: http://google.com/        &quot;Google&quot;
+    [2]: http://search.yahoo.com/  &quot;Yahoo Search&quot;
+    [3]: http://search.msn.com/    &quot;MSN Search&quot; 
+</code></pre><p>或者：</p>
+<pre><code>I get 10 times more traffic from [Google][] than from[Yahoo][] or [MSN][].
+
+     [google]: http://google.com/        &quot;Google&quot;
+     [yahoo]:  http://search.yahoo.com/  &quot;Yahoo Search&quot;
+     [msn]:    http://search.msn.com/    &quot;MSN Search&quot;br
+</code></pre><h4 id="强调"><a href="#强调" class="headerlink" title="强调"></a>强调</h4><p>Markdown 使用星号（*）和底线（_）作为标记强调字词的符号，被 * 或 _ 包围的字词会被转成用 &lt;\em> 标签包围，用两个 * 或 _ 包起来的话，则会被转成 <strong>，例如：</strong></p>
+
+<pre><code>*single asterisks*
+
+_single underscores_
+
+**double asterisks**
+
+__double underscores__
+</code></pre><p>效果如下：<br><em>single asterisks</em></p>
+<p><em>single underscores</em></p>
+<p><strong>double asterisks</strong></p>
+<p><strong>double underscores</strong></p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p>如果要标记一小段行内代码，你可以用反引号把它包起来（`），例如：</p>
+<pre><code>Use the `printf()` function.
+</code></pre><p>效果如下：<br>Use the <code>printf()</code> function.<br>A single backtick in a code span: <code>` </code></p>
+<p>A backtick-delimited string in a code span: <code>`&lt;foo&gt;` </code></p>
+<h4 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h4><p>Markdown 使用一种和链接很相似的语法来标记图片，同样也允许两种样式： 行内式和参考式。</p>
+<p>行内式的图片语法看起来像是：</p>
+<pre><code>![Alt text](/path/to/img.jpg)
+
+![Alt text](/path/to/img.jpg &quot;Optional title&quot;)
+</code></pre><p>详细叙述如下：</p>
+<ul>
+<li>一个惊叹号 !</li>
+<li>接着一个方括号，里面放上图片的替代文字</li>
+<li>接着一个普通括号，里面放上图片的网址，最后还可以用引号包住并加上 选择性的 ‘title’ 文字。</li>
+</ul>
+<p>参考式的图片语法则长得像这样：</p>
+<pre>![Alt text][id]</pre>
+
+<p>「id」是图片参考的名称，图片参考的定义方式则和连结参考一样：</p>
+<pre><code>[id]: url/to/image  &quot;Optional title attribute&quot;
+</code></pre><p>到目前为止， Markdown 还没有办法指定图片的宽高，如果你需要的话，你可以使用普通的 <img> 标签。</p>
+</blockquote>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><blockquote>
+<h4 id="自动链接"><a href="#自动链接" class="headerlink" title="自动链接"></a>自动链接</h4><p>Markdown 支持以比较简短的自动链接形式来处理网址和电子邮件信箱，只要是用方括号包起来， Markdown 就会自动把它转成链接。一般网址的链接文字就和链接地址一样，例如：</p>
+<pre><code>&lt;http://example.com/&gt;
+</code></pre><p>Markdown 会转为：</p>
+<pre><code>&lt;a href=&quot;http://example.com/&quot;&gt;http://example.com/&lt;/a&gt;
+</code></pre><p>邮址的自动链接也很类似，只是 Markdown 会先做一个编码转换的过程，把文字字符转成 16 进位码的 HTML 实体，这样的格式可以糊弄一些不好的邮址收集机器人，例如：</p>
+<pre><code>&lt;address@example.com&gt;
+</code></pre><p>Markdown 会转成：</p>
+<pre><code> &lt;a href=&quot;&amp;#x6D;&amp;#x61;i&amp;#x6C;&amp;#x74;&amp;#x6F;:&amp;#x61;&amp;#x64;&amp;#x64;&amp;#x72;&amp;#x65;
+&amp;#115;&amp;#115;&amp;#64;&amp;#101;&amp;#120;&amp;#x61;&amp;#109;&amp;#x70;&amp;#x6C;e&amp;#x2E;&amp;#99;&amp;#111;
+&amp;#109;&quot;&gt;&amp;#x61;&amp;#x64;&amp;#x64;&amp;#x72;&amp;#x65;&amp;#115;&amp;#115;&amp;#64;&amp;#101;&amp;#120;&amp;#x61;
+&amp;#109;&amp;#x70;&amp;#x6C;e&amp;#x2E;&amp;#99;&amp;#111;&amp;#109;&lt;/a&gt;
+</code></pre><p>在浏览器里面，这段字串（其实是 <a href="mailto:address@example.com" target="_blank" rel="external">address@example.com</a>）会变成一个可以点击的「address@example.com」链接。</p>
+</blockquote>
+<p>（这种作法虽然可以糊弄不少的机器人，但并不能全部挡下来，不过总比什么都不做好些。不管怎样，公开你的信箱终究会引来广告信件的。）</p>
+<blockquote>
+<h4 id="反斜杠"><a href="#反斜杠" class="headerlink" title="反斜杠"></a>反斜杠</h4><p>Markdown 可以利用反斜杠来插入一些在语法中有其它意义的符号，例如：如果你想要用星号加在文字旁边的方式来做出强调效果（但不用 <em> 标签），你可以在星号的前面加上反斜杠：</em></p>
+<pre><code>\*literal asterisks\*
+</code></pre><p>Markdown 支持以下这些符号前面加上反斜杠来帮助插入普通的符号：</p>
+<pre><code>\   反斜线
+`   反引号
+*   星号
+_   底线
+{}  花括号
+[]  方括号
+()  括弧
+#   井字号
++   加号
+-   减号
+.   英文句点
+!   惊叹号
+</code></pre></blockquote>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;//1 创建XHR对象&lt;br&gt;    var xhr = null;&lt;br&gt;    if(window.XMLHttpRequest){  //新IE、其它浏览器&lt;br&gt;        xhr = new XMLHttpRequest();&lt;br&gt;    }else { //老IE&lt;br&gt;        xhr = new ActiveXObject(‘Microsoft.XMLHTTP’);&lt;br&gt;    }&lt;br&gt;//2 监听XHR的状态改变&lt;br&gt;    xhr.onreadystatechange = function(){&lt;br&gt;      if(xhr.readyState===4){ //DONE响应消息接收完成&lt;br&gt;        if(xhr.status===200){&lt;br&gt;          console.log(‘响应接收完成且成功’);&lt;br&gt;          console.log(‘响应主体：’+xhr.responseText);&lt;br&gt;          doResponse(xhr.responseText);//调用自定义的函数，处理响应数据&lt;br&gt;        }else {&lt;br&gt;          console.log(‘响应接收完成但不成功’);&lt;br&gt;          console.log(‘响应状态码为：’+xhr.status);&lt;br&gt;        }&lt;br&gt;      }&lt;br&gt;    }&lt;br&gt;
+      &lt;h3 id=&quot;标题&quot;&gt;&lt;a href=&quot;#标题&quot; class=&quot;headerlink&quot; title=&quot;标题&quot;&gt;&lt;/a&gt;标题&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;# 这是 H1 #
+
+## 这是 H2 ##
+
+### 这是 H3 ######
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;引用块&quot;&gt;&lt;a href=&quot;#引用块&quot; class=&quot;headerlink&quot; title=&quot;引用块&quot;&gt;&lt;/a&gt;引用块&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;&amp;gt;This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+&amp;gt;&amp;gt;Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+&amp;gt; 
+&amp;gt; 1.   这是第一行列表项。
+&amp;gt; 2.   这是第二行列表项。
+&amp;gt; 
+&amp;gt; 给出一些例子代码：
+&amp;gt; 
+&amp;gt;     return shell_exec(&amp;quot;echo $input | $markdown_script&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,&lt;br&gt;consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;这是第一行列表项。&lt;/li&gt;
+&lt;li&gt;这是第二行列表项。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;给出一些例子代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;return shell_exec(&amp;quot;echo $input | $markdown_script&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="study" scheme="http://yoursite.com/tags/study/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AJAX的XMLHttpRequest对象使用</title>
+    <link href="http://yoursite.com/2016/05/20/AJAX%E7%9A%84XMLHttpRequest%E5%AF%B9%E8%B1%A1%E4%BD%BF%E7%94%A8/"/>
+    <id>http://yoursite.com/2016/05/20/AJAX的XMLHttpRequest对象使用/</id>
+    <published>2016-05-20T02:09:29.000Z</published>
+    <updated>2016-08-15T06:31:53.150Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<h3 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h3><pre><code>   //1 创建XHR对象
+    var xhr = null;
+    if(window.XMLHttpRequest){  //新IE、其它浏览器
+        xhr = new XMLHttpRequest();  
+    }else { //老IE
+        xhr = new ActiveXObject(&apos;Microsoft.XMLHTTP&apos;);
+    }
+//2 监听XHR的状态改变
+    xhr.onreadystatechange = function(){
+      if(xhr.readyState===4){ //DONE响应消息接收完成
+        if(xhr.status===200){
+          console.log(&apos;响应接收完成且成功&apos;);
+          console.log(&apos;响应主体：&apos;+xhr.responseText);
+          doResponse(xhr.responseText);//调用自定义的函数，处理响应数据
+        }else {
+          console.log(&apos;响应接收完成但不成功&apos;);
+          console.log(&apos;响应状态码为：&apos;+xhr.status);
+        }
+      }
+    }
+</code></pre><a id="more"></a>
+<pre><code>//3 打开连接
+    xhr.open(&apos;GET&apos;,&apos;test.php?uname=&apos;+n, true);
+//4 发送请求消息
+    xhr.send( null );
+</code></pre></blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;h3 id=&quot;代码如下&quot;&gt;&lt;a href=&quot;#代码如下&quot; class=&quot;headerlink&quot; title=&quot;代码如下&quot;&gt;&lt;/a&gt;代码如下&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;   //1 创建XHR对象
+    var xhr = null;
+    if(window.XMLHttpRequest){  //新IE、其它浏览器
+        xhr = new XMLHttpRequest();  
+    }else { //老IE
+        xhr = new ActiveXObject(&amp;apos;Microsoft.XMLHTTP&amp;apos;);
+    }
+//2 监听XHR的状态改变
+    xhr.onreadystatechange = function(){
+      if(xhr.readyState===4){ //DONE响应消息接收完成
+        if(xhr.status===200){
+          console.log(&amp;apos;响应接收完成且成功&amp;apos;);
+          console.log(&amp;apos;响应主体：&amp;apos;+xhr.responseText);
+          doResponse(xhr.responseText);//调用自定义的函数，处理响应数据
+        }else {
+          console.log(&amp;apos;响应接收完成但不成功&amp;apos;);
+          console.log(&amp;apos;响应状态码为：&amp;apos;+xhr.status);
+        }
+      }
+    }
+&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     
@@ -100,21 +868,32 @@
     <link href="http://yoursite.com/2016/05/04/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E4%BF%A1%E6%81%AF%E8%BF%87%E8%BD%BD/"/>
     <id>http://yoursite.com/2016/05/04/如何处理信息过载/</id>
     <published>2016-05-04T06:11:29.000Z</published>
-    <updated>2016-08-12T07:05:10.022Z</updated>
+    <updated>2016-08-15T08:41:54.669Z</updated>
     
-    <content type="html"><![CDATA[<p>一、俯瞰全景<br>用断舍离的自在力俯瞰信息输入全景<br>微信：群、订阅号、朋友圈<br>微博、日报、新闻等APP<br>书籍、杂志<br>音频<br>其他</p>
-<p>二、正本清源<br>梳理反思，及时清理对你造成困扰的信息源头。<br>以下是我的使用习惯，供参考<br>微信清退规则<br>群：没有群规，且超过一个月不曾发言<br>订阅号：未读数超 30<br>朋友圈：固定时间查阅<br>APP：关掉推送通知，关不掉就卸掉</p>
-<p>书籍<br>尽量阅读纸质书，不读杂志<br>读「元学科」相关的著作<br>阅读经典与诚意之作<br>阅读器存放的书不超过四本</p>
-<p>音频<br>只在通勤时收听</p>
-<p>社交<br>远离社交媒体<br>尽可能独立思考地输出代表作<br>有可追溯的记录平台<br>让自己变得优秀，方可与优秀的人相聚</p>
+    <content type="html"><![CDATA[<h3 id="一、俯瞰全景"><a href="#一、俯瞰全景" class="headerlink" title="一、俯瞰全景"></a>一、俯瞰全景</h3><blockquote>
+<p>用断舍离的自在力俯瞰信息输入全景<br>微信：群、订阅号、朋友圈<br>微博、日报、新闻等APP<br>书籍、杂志<br>音频<br>其他</p>
+</blockquote>
+<h3 id="二、正本清源"><a href="#二、正本清源" class="headerlink" title="二、正本清源"></a>二、正本清源</h3><blockquote>
+<p>梳理反思，及时清理对你造成困扰的信息源头。<br>以下是我的使用习惯，供参考<br>微信清退规则<br>群：没有群规，且超过一个月不曾发言<br>订阅号：未读数超 30<br>朋友圈：固定时间查阅<br>APP：关掉推送通知，关不掉就卸掉<br><a id="more"></a></p>
+<h3 id="三、书籍"><a href="#三、书籍" class="headerlink" title="三、书籍"></a>三、书籍</h3><p>尽量阅读纸质书，不读杂志<br>读「元学科」相关的著作<br>阅读经典与诚意之作<br>阅读器存放的书不超过四本</p>
+</blockquote>
+<h3 id="四、音频"><a href="#四、音频" class="headerlink" title="四、音频"></a>四、音频</h3><blockquote>
+<p>只在通勤时收听</p>
+</blockquote>
+<h3 id="五、社交"><a href="#五、社交" class="headerlink" title="五、社交"></a>五、社交</h3><blockquote>
+<p>远离社交媒体<br>尽可能独立思考地输出代表作<br>有可追溯的记录平台<br>让自己变得优秀，方可与优秀的人相聚</p>
 <p>会当凌绝顶，一览众山小。当你攀爬上思想巅峰，你便知，所谓信息过载，便如山边之行云，待一一退去，方可领略真知的雄伟。</p>
+</blockquote>
 <p>作者：陈素封<br>链接：<a href="http://www.zhihu.com/question/19685050/answer/71453024" target="_blank" rel="external">http://www.zhihu.com/question/19685050/answer/71453024</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;一、俯瞰全景&lt;br&gt;用断舍离的自在力俯瞰信息输入全景&lt;br&gt;微信：群、订阅号、朋友圈&lt;br&gt;微博、日报、新闻等APP&lt;br&gt;书籍、杂志&lt;br&gt;音频&lt;br&gt;其他&lt;/p&gt;
-&lt;p&gt;二、正本清源&lt;br&gt;梳理反思，及时清理对你造成困扰的信息源头。&lt;br&gt;以下是我的使用习惯，供参考&lt;b
+      &lt;h3 id=&quot;一、俯瞰全景&quot;&gt;&lt;a href=&quot;#一、俯瞰全景&quot; class=&quot;headerlink&quot; title=&quot;一、俯瞰全景&quot;&gt;&lt;/a&gt;一、俯瞰全景&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;用断舍离的自在力俯瞰信息输入全景&lt;br&gt;微信：群、订阅号、朋友圈&lt;br&gt;微博、日报、新闻等APP&lt;br&gt;书籍、杂志&lt;br&gt;音频&lt;br&gt;其他&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;二、正本清源&quot;&gt;&lt;a href=&quot;#二、正本清源&quot; class=&quot;headerlink&quot; title=&quot;二、正本清源&quot;&gt;&lt;/a&gt;二、正本清源&lt;/h3&gt;&lt;blockquote&gt;
+&lt;p&gt;梳理反思，及时清理对你造成困扰的信息源头。&lt;br&gt;以下是我的使用习惯，供参考&lt;br&gt;微信清退规则&lt;br&gt;群：没有群规，且超过一个月不曾发言&lt;br&gt;订阅号：未读数超 30&lt;br&gt;朋友圈：固定时间查阅&lt;br&gt;APP：关掉推送通知，关不掉就卸掉&lt;br&gt;
     
     </summary>
     
