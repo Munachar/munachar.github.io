@@ -289,7 +289,7 @@ ctx.drawImage(img, x, y, width, height);  //使用指定的宽和高绘制图像
     <link href="http://yoursite.com/2016/07/10/%E5%85%B3%E4%BA%8ECSS%20hack/"/>
     <id>http://yoursite.com/2016/07/10/关于CSS hack/</id>
     <published>2016-07-10T09:01:29.000Z</published>
-    <updated>2016-08-19T07:17:23.133Z</updated>
+    <updated>2016-08-25T07:11:24.369Z</updated>
     
     <content type="html"><![CDATA[<h4 id="讨论CSS-hacks，条件引用或者其他。"><a href="#讨论CSS-hacks，条件引用或者其他。" class="headerlink" title="讨论CSS hacks，条件引用或者其他。"></a>讨论CSS hacks，条件引用或者其他。</h4><pre><code>background-color:#f1ee18;/*所有识别*/
 
@@ -320,11 +320,42 @@ _background-color:#1e0bd1;/*IE6识别*/
     }
 } 
 * +html .bb{background-color:#a200ff;}/* 仅IE7 识别 */
-</code></pre>]]></content>
+</code></pre><a id="more"></a>    
+<p><img src="../uploads/CSS_hack.png" width="100%"></p>
+]]></content>
     
     <summary type="html">
     
-      &lt;h4 id=&quot;讨论CSS-hacks，条件引用或者其他。&quot;&gt;&lt;a href=&quot;#讨论CSS-hacks，条件引用或者其他。&quot; class=&quot;headerlink&quot; title=&quot;讨论CSS hacks，条件引用或者其他。&quot;&gt;&lt;/a&gt;讨论CSS hacks，条件引用或者其他。&lt;/
+      &lt;h4 id=&quot;讨论CSS-hacks，条件引用或者其他。&quot;&gt;&lt;a href=&quot;#讨论CSS-hacks，条件引用或者其他。&quot; class=&quot;headerlink&quot; title=&quot;讨论CSS hacks，条件引用或者其他。&quot;&gt;&lt;/a&gt;讨论CSS hacks，条件引用或者其他。&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;background-color:#f1ee18;/*所有识别*/
+
+background-color:#00deff\9; /*IE6、7、8识别*/
+
++background-color:#a200ff;/*IE6、7识别*/
+
+_background-color:#1e0bd1;/*IE6识别*/
+
+:root#test{background-color:purple\9;}:root是给ie9的，
+
+@media screen and (-webkit-min-device-pixel-ratio:0){
+    .bb{background-color:#f1ee18}/* Safari(Chrome) 有效 */
+}{} 
+@media all and (min-width: 0px){ 
+    .bb{
+        background-color:#f1ee18;/*opera and Safari(Chrome) and firefox*/ 
+        background-color:#4cac70\0;/* 仅 Opera 有效 */ 
+    }
+}{} 
+
+.bb, x:-moz-any-link, x:default{
+    background-color:#4eff00;/*IE7、Firefox3.5及以下 识别 */
+} 
+@-moz-document url-prefix(){
+    .bb{
+        background-color:#4eff00;/*仅 Firefox 识别 */
+    }
+} 
+* +html .bb{background-color:#a200ff;}/* 仅IE7 识别 */
+&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     

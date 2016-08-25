@@ -215,7 +215,9 @@ _background-color:#1e0bd1;/*IE6识别*/
     }
 } 
 * +html .bb{background-color:#a200ff;}/* 仅IE7 识别 */
-</code></pre>]]></content>
+</code></pre><a id="more"></a>    
+<p><img src="../uploads/CSS_hack.png" width="100%"></p>
+]]></content>
     </entry>
     
     <entry>
