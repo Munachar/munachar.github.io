@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-08-19T08:53:11.130Z</updated>
+  <updated>2016-08-26T09:32:28.982Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,70 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HTML5离线存储和本地缓存</title>
+    <link href="http://yoursite.com/2016/07/15/H5%E6%9C%AC%E5%9C%B0%E7%BC%93%E5%AD%98%E5%92%8C%E7%A6%BB%E7%BA%BF%E7%BC%93%E5%AD%98/"/>
+    <id>http://yoursite.com/2016/07/15/H5本地缓存和离线缓存/</id>
+    <published>2016-07-15T06:11:29.000Z</published>
+    <updated>2016-08-26T09:32:28.982Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一、离线缓存"><a href="#一、离线缓存" class="headerlink" title="一、离线缓存"></a>一、离线缓存</h1><p>有一个web应用有三个文件index.html,a.js,b.css，现在需要把js和css文件缓存起来</p>
+<p>   1.在index.html里加上<html manifest="test.manifest"></html></p>
+<p>   2.manifest清单格式如下</p>
+<blockquote>
+<pre><code>CACHE MANIFEST
+#上面一句必须
+#v1.0.0
+#需要缓存的文件
+CACHE:
+a.js
+b.css
+#不需要缓存的文件
+NETWORK:
+*
+#无法访问页面
+FALLBACK:
+404.html
+复制代码
+</code></pre></blockquote>
+<p>3.manifest文件的mime-type必须是 text/cache-manifest类型</p>
+<blockquote>
+<p>注意点：<br>  a.对于每个index.html?id=1或index.html?id=2都会分别缓存index.html页面，可以通过chrome浏览器Resources/Application Cache观察<br>  b.如果想更新缓存内容，只要修改下manifest文件即可，如改版本号v1.0.1</p>
+</blockquote>
+<p>4.离线存储如果资源有更新，可以通过如下代码来监听，但第一次加载还会是原来的版本</p>
+<blockquote>
+<pre><code>window.applicationCache.addEventListener(&apos;updateready&apos;,function(e){
+    if(window.applicationCache.status == window.applicationCache.UPDATEREADY){
+        window.applicationCache.swapCache();
+        if(confirm(&quot;loding new?&quot;)){
+            window.location.reload()
+        }
+    }
+},false)    
+</code></pre></blockquote>
+<h1 id="二、本地缓存"><a href="#二、本地缓存" class="headerlink" title="二、本地缓存"></a>二、本地缓存</h1><pre><code>localStorage.setItem(&quot;key&quot;,&quot;value&quot;)
+
+localStorage.getItem(&quot;key&quot;,&quot;value&quot;)
+
+localStorage.removeItem(&quot;key&quot;)
+
+localStorage.clear()
+</code></pre><p>1.本地存储永不过期，除非自己去清除</p>
+<p>2.可以通过chrome浏览器Resources/Local Storage来查看</p>
+<p>3.不同域下就算key相同取不到的值也不同，如localhost和127.0.0.1</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;一、离线缓存&quot;&gt;&lt;a href=&quot;#一、离线缓存&quot; class=&quot;headerlink&quot; title=&quot;一、离线缓存&quot;&gt;&lt;/a&gt;一、离线缓存&lt;/h1&gt;&lt;p&gt;有一个web应用有三个文件index.html,a.js,b.css，现在需要把js和css文件缓存起来&lt;/
+    
+    </summary>
+    
+    
+      <category term="H5" scheme="http://yoursite.com/tags/H5/"/>
+    
+  </entry>
   
   <entry>
     <title>Canvas绘图技术</title>
@@ -1504,42 +1568,6 @@ git操作和git
     
     
       <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>postName</title>
-    <link href="http://yoursite.com/2015/08/12/H5%E6%9C%AC%E5%9C%B0%E7%BC%93%E5%AD%98%E5%92%8C%E7%A6%BB%E7%BA%BF%E7%BC%93%E5%AD%98/"/>
-    <id>http://yoursite.com/2015/08/12/H5本地缓存和离线缓存/</id>
-    <published>2015-08-12T06:11:29.000Z</published>
-    <updated>2016-08-26T09:22:49.980Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="一、离线缓存"><a href="#一、离线缓存" class="headerlink" title="一、离线缓存"></a>一、离线缓存</h1><p>有一个web应用有三个文件index.html,a.js,b.css，现在需要把js和css文件缓存起来</p>
-<p>   1.在index.html里加上<html manifest="test.manifest"></html></p>
-<p>   2.manifest清单格式如下<br>    CACHE MANIFEST</p>
-<pre><code>#上面一句必须
-#v1.0.0
-#需要缓存的文件
-CACHE:
-a.js
-b.css
-#不需要缓存的文件
-NETWORK:
-*
-#无法访问页面
-FALLBACK:
-404.html
-复制代码
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;一、离线缓存&quot;&gt;&lt;a href=&quot;#一、离线缓存&quot; class=&quot;headerlink&quot; title=&quot;一、离线缓存&quot;&gt;&lt;/a&gt;一、离线缓存&lt;/h1&gt;&lt;p&gt;有一个web应用有三个文件index.html,a.js,b.css，现在需要把js和css文件缓存起来&lt;/
-    
-    </summary>
-    
-    
-      <category term="H5" scheme="http://yoursite.com/tags/H5/"/>
     
   </entry>
   
