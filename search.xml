@@ -214,10 +214,8 @@ _background-color:#1e0bd1;/*IE6识别*/
         background-color:#4eff00;/*仅 Firefox 识别 */
     }
 } 
-* +html .bb{background-color:#a200ff;}/* 仅IE7 识别 */
-</code></pre><a id="more"></a>    
-<p><img src="../uploads/CSS_hack.png" width="100%"></p>
-]]></content>
+* +html .bb{background-color:#a200ff;}/* 仅IE7 识别 */&lt;!-- more --&gt;    
+</code></pre>]]></content>
     </entry>
     
     <entry>
@@ -1042,6 +1040,28 @@ npm -v
 文／Andrew_liu（简书作者）
 原文链接：http://www.jianshu.com/p/858ecf233db9
 著作权归作者所有，转载请联系作者获得授权，并标注“简书作者”。
+</code></pre>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[postName]]></title>
+      <url>http://yoursite.com/2015/08/12/H5%E6%9C%AC%E5%9C%B0%E7%BC%93%E5%AD%98%E5%92%8C%E7%A6%BB%E7%BA%BF%E7%BC%93%E5%AD%98/</url>
+      <content type="html"><![CDATA[<h1 id="一、离线缓存"><a href="#一、离线缓存" class="headerlink" title="一、离线缓存"></a>一、离线缓存</h1><p>有一个web应用有三个文件index.html,a.js,b.css，现在需要把js和css文件缓存起来</p>
+<p>   1.在index.html里加上<html manifest="test.manifest"></html></p>
+<p>   2.manifest清单格式如下<br>    CACHE MANIFEST</p>
+<pre><code>#上面一句必须
+#v1.0.0
+#需要缓存的文件
+CACHE:
+a.js
+b.css
+#不需要缓存的文件
+NETWORK:
+*
+#无法访问页面
+FALLBACK:
+404.html
+复制代码
 </code></pre>]]></content>
     </entry>
     

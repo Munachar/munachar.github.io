@@ -289,7 +289,7 @@ ctx.drawImage(img, x, y, width, height);  //使用指定的宽和高绘制图像
     <link href="http://yoursite.com/2016/07/10/%E5%85%B3%E4%BA%8ECSS%20hack/"/>
     <id>http://yoursite.com/2016/07/10/关于CSS hack/</id>
     <published>2016-07-10T09:01:29.000Z</published>
-    <updated>2016-08-25T07:11:24.369Z</updated>
+    <updated>2016-08-25T07:19:47.138Z</updated>
     
     <content type="html"><![CDATA[<h4 id="讨论CSS-hacks，条件引用或者其他。"><a href="#讨论CSS-hacks，条件引用或者其他。" class="headerlink" title="讨论CSS hacks，条件引用或者其他。"></a>讨论CSS hacks，条件引用或者其他。</h4><pre><code>background-color:#f1ee18;/*所有识别*/
 
@@ -319,43 +319,12 @@ _background-color:#1e0bd1;/*IE6识别*/
         background-color:#4eff00;/*仅 Firefox 识别 */
     }
 } 
-* +html .bb{background-color:#a200ff;}/* 仅IE7 识别 */
-</code></pre><a id="more"></a>    
-<p><img src="../uploads/CSS_hack.png" width="100%"></p>
-]]></content>
+* +html .bb{background-color:#a200ff;}/* 仅IE7 识别 */&lt;!-- more --&gt;    
+</code></pre>]]></content>
     
     <summary type="html">
     
-      &lt;h4 id=&quot;讨论CSS-hacks，条件引用或者其他。&quot;&gt;&lt;a href=&quot;#讨论CSS-hacks，条件引用或者其他。&quot; class=&quot;headerlink&quot; title=&quot;讨论CSS hacks，条件引用或者其他。&quot;&gt;&lt;/a&gt;讨论CSS hacks，条件引用或者其他。&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;background-color:#f1ee18;/*所有识别*/
-
-background-color:#00deff\9; /*IE6、7、8识别*/
-
-+background-color:#a200ff;/*IE6、7识别*/
-
-_background-color:#1e0bd1;/*IE6识别*/
-
-:root#test{background-color:purple\9;}:root是给ie9的，
-
-@media screen and (-webkit-min-device-pixel-ratio:0){
-    .bb{background-color:#f1ee18}/* Safari(Chrome) 有效 */
-}{} 
-@media all and (min-width: 0px){ 
-    .bb{
-        background-color:#f1ee18;/*opera and Safari(Chrome) and firefox*/ 
-        background-color:#4cac70\0;/* 仅 Opera 有效 */ 
-    }
-}{} 
-
-.bb, x:-moz-any-link, x:default{
-    background-color:#4eff00;/*IE7、Firefox3.5及以下 识别 */
-} 
-@-moz-document url-prefix(){
-    .bb{
-        background-color:#4eff00;/*仅 Firefox 识别 */
-    }
-} 
-* +html .bb{background-color:#a200ff;}/* 仅IE7 识别 */
-&lt;/code&gt;&lt;/pre&gt;
+      &lt;h4 id=&quot;讨论CSS-hacks，条件引用或者其他。&quot;&gt;&lt;a href=&quot;#讨论CSS-hacks，条件引用或者其他。&quot; class=&quot;headerlink&quot; title=&quot;讨论CSS hacks，条件引用或者其他。&quot;&gt;&lt;/a&gt;讨论CSS hacks，条件引用或者其他。&lt;/
     
     </summary>
     
@@ -1535,6 +1504,42 @@ git操作和git
     
     
       <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>postName</title>
+    <link href="http://yoursite.com/2015/08/12/H5%E6%9C%AC%E5%9C%B0%E7%BC%93%E5%AD%98%E5%92%8C%E7%A6%BB%E7%BA%BF%E7%BC%93%E5%AD%98/"/>
+    <id>http://yoursite.com/2015/08/12/H5本地缓存和离线缓存/</id>
+    <published>2015-08-12T06:11:29.000Z</published>
+    <updated>2016-08-26T09:22:49.980Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="一、离线缓存"><a href="#一、离线缓存" class="headerlink" title="一、离线缓存"></a>一、离线缓存</h1><p>有一个web应用有三个文件index.html,a.js,b.css，现在需要把js和css文件缓存起来</p>
+<p>   1.在index.html里加上<html manifest="test.manifest"></html></p>
+<p>   2.manifest清单格式如下<br>    CACHE MANIFEST</p>
+<pre><code>#上面一句必须
+#v1.0.0
+#需要缓存的文件
+CACHE:
+a.js
+b.css
+#不需要缓存的文件
+NETWORK:
+*
+#无法访问页面
+FALLBACK:
+404.html
+复制代码
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;一、离线缓存&quot;&gt;&lt;a href=&quot;#一、离线缓存&quot; class=&quot;headerlink&quot; title=&quot;一、离线缓存&quot;&gt;&lt;/a&gt;一、离线缓存&lt;/h1&gt;&lt;p&gt;有一个web应用有三个文件index.html,a.js,b.css，现在需要把js和css文件缓存起来&lt;/
+    
+    </summary>
+    
+    
+      <category term="H5" scheme="http://yoursite.com/tags/H5/"/>
     
   </entry>
   
