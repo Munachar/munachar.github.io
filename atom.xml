@@ -1497,9 +1497,9 @@ consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
     </summary>
     
     
-      <category term="AJAX" scheme="http://yoursite.com/tags/AJAX/"/>
-    
       <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
+    
+      <category term="AJAX" scheme="http://yoursite.com/tags/AJAX/"/>
     
   </entry>
   
