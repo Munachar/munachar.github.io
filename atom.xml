@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-08-26T09:32:28.982Z</updated>
+  <updated>2016-08-29T02:01:43.275Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/07/15/H5%E6%9C%AC%E5%9C%B0%E7%BC%93%E5%AD%98%E5%92%8C%E7%A6%BB%E7%BA%BF%E7%BC%93%E5%AD%98/"/>
     <id>http://yoursite.com/2016/07/15/H5本地缓存和离线缓存/</id>
     <published>2016-07-15T06:11:29.000Z</published>
-    <updated>2016-08-26T09:32:28.982Z</updated>
+    <updated>2016-08-29T02:01:43.275Z</updated>
     
     <content type="html"><![CDATA[<h1 id="一、离线缓存"><a href="#一、离线缓存" class="headerlink" title="一、离线缓存"></a>一、离线缓存</h1><p>有一个web应用有三个文件index.html,a.js,b.css，现在需要把js和css文件缓存起来</p>
 <p>   1.在index.html里加上<html manifest="test.manifest"></html></p>
@@ -43,10 +43,7 @@ FALLBACK:
 </code></pre></blockquote>
 <p>3.manifest文件的mime-type必须是 text/cache-manifest类型</p>
 <blockquote>
-<p>注意点：<br>  a.对于每个index.html?id=1或index.html?id=2都会分别缓存index.html页面，可以通过chrome浏览器Resources/Application Cache观察<br>  b.如果想更新缓存内容，只要修改下manifest文件即可，如改版本号v1.0.1</p>
-</blockquote>
-<p>4.离线存储如果资源有更新，可以通过如下代码来监听，但第一次加载还会是原来的版本</p>
-<blockquote>
+<p>注意点：<br>  a.对于每个index.html?id=1或index.html?id=2都会分别缓存index.html页面，可以通过chrome浏览器Resources/Application Cache观察<br>  b.如果想更新缓存内容，只要修改下manifest文件即可，如改版本号v1.0.1<br><a id="more"></a><br>4.离线存储如果资源有更新，可以通过如下代码来监听，但第一次加载还会是原来的版本</p>
 <pre><code>window.applicationCache.addEventListener(&apos;updateready&apos;,function(e){
     if(window.applicationCache.status == window.applicationCache.UPDATEREADY){
         window.applicationCache.swapCache();
@@ -70,7 +67,28 @@ localStorage.clear()
     
     <summary type="html">
     
-      &lt;h1 id=&quot;一、离线缓存&quot;&gt;&lt;a href=&quot;#一、离线缓存&quot; class=&quot;headerlink&quot; title=&quot;一、离线缓存&quot;&gt;&lt;/a&gt;一、离线缓存&lt;/h1&gt;&lt;p&gt;有一个web应用有三个文件index.html,a.js,b.css，现在需要把js和css文件缓存起来&lt;/
+      &lt;h1 id=&quot;一、离线缓存&quot;&gt;&lt;a href=&quot;#一、离线缓存&quot; class=&quot;headerlink&quot; title=&quot;一、离线缓存&quot;&gt;&lt;/a&gt;一、离线缓存&lt;/h1&gt;&lt;p&gt;有一个web应用有三个文件index.html,a.js,b.css，现在需要把js和css文件缓存起来&lt;/p&gt;
+&lt;p&gt;   1.在index.html里加上&lt;html manifest=&quot;test.manifest&quot;&gt;&lt;/p&gt;
+&lt;p&gt;   2.manifest清单格式如下&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;CACHE MANIFEST
+#上面一句必须
+#v1.0.0
+#需要缓存的文件
+CACHE:
+a.js
+b.css
+#不需要缓存的文件
+NETWORK:
+*
+#无法访问页面
+FALLBACK:
+404.html
+复制代码
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;p&gt;3.manifest文件的mime-type必须是 text/cache-manifest类型&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注意点：&lt;br&gt;  a.对于每个index.html?id=1或index.html?id=2都会分别缓存index.html页面，可以通过chrome浏览器Resources/Application Cache观察&lt;br&gt;  b.如果想更新缓存内容，只要修改下manifest文件即可，如改版本号v1.0.1&lt;br&gt;
     
     </summary>
     
