@@ -1194,9 +1194,9 @@ function template(tpl,obj){
       <category term="Testing" scheme="http://yoursite.com/categories/Testing/"/>
     
     
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
+    
+      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -1497,9 +1497,9 @@ consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
     </summary>
     
     
-      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
-    
       <category term="AJAX" scheme="http://yoursite.com/tags/AJAX/"/>
+    
+      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
     
   </entry>
   
