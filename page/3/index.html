@@ -283,7 +283,7 @@
             
               
                 
-                <a class="post-title-link" href="/2015/07/20/Javascript代码收集/" itemprop="url">
+                <a class="post-title-link" href="/2015/08/12/postName/" itemprop="url">
                   postName
                 </a>
               
@@ -297,8 +297,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-07-20T14:11:29+08:00" content="2015-07-20">
-              2015-07-20
+            <time itemprop="dateCreated" datetime="2015-08-12T14:11:29+08:00" content="2015-08-12">
+              2015-08-12
             </time>
           </span>
 
@@ -308,8 +308,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/07/20/Javascript代码收集/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/20/Javascript代码收集/" itemprop="commentsCount"></span>
+                <a href="/2015/08/12/postName/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/12/postName/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -319,7 +319,7 @@
 
           
           
-             <span id="/2015/07/20/Javascript代码收集/" class="leancloud_visitors" data-flag-title="postName">
+             <span id="/2015/08/12/postName/" class="leancloud_visitors" data-flag-title="postName">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -343,73 +343,28 @@
       
         
           
-            <h2 id="1-根据userAgent判断是否手机"><a href="#1-根据userAgent判断是否手机" class="headerlink" title="1.根据userAgent判断是否手机"></a>1.根据userAgent判断是否手机</h2><pre><code>if(/AppleWebKit.*Mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))){
-    if(window.location.href.indexOf(&quot;?mobile&quot;)&lt;0){
-        try{
-            if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){
-                //移动端
-            }else if(/iPad/i.test(navigator.userAgent)){
-                //这里对ipad做了处理
-            }else{
-                //移动端
-            }
-        }catch(e){}
-    }
-}else{
-    //pc端
-}
-var ISWP = !!(navigator.userAgent.match(/Windows\sPhone/i));
-</code></pre><h2 id="2-this-constructor-prototype例子"><a href="#2-this-constructor-prototype例子" class="headerlink" title="2.this, constructor, prototype例子"></a>2.this, constructor, prototype例子</h2><pre><code>var Tinker = function(){
-    this.elements = [];
+            <pre><code>1. Git安装和Github设置
+使用Mac电脑可以直brew安装,
 
-};
-    Tinker.fn = Tinker.prototype = {
-        constructor: Tinker,
-        extend: function(obj){
-            var p;
-            for(p in obj){
-                this.constructor.prototype[p] = obj[p];//此处若看明白了, 那么前面的就理解了
-            }
-        }
+brew install git         #Mac电脑使用brew安装
+sudo apt-get install git #Ubuntu系统使用这条命令安装
+git操作和github上SSH设置请看这篇博文
 
-    }
-    Tinker.fn.extend({
-       get: function(){
-            var length = arguments.length,
-            i = 0;
-           for(; i &lt; length; i++){
-               this.elements.push(arguments[i]); //此处若看明白了, 那么前面的就理解了
-           }
-           return this;//此处若看明白了, 那么前面的就理解了
-       },
-       each: function(fn){
-            var i = 0,
-                length = this.elements.length;
-            for(; i &lt; length; i++){
-                fn.call(this.elements[i], i, this.elements[i]);
-            }
-            return this;//此处若看明白了, 那么前面的就理解了
-       }
+使用Github Page搭建博客, 需要遵循一定的规则, 需要在github建立仓库,仓库名为Github用户.github.io, 更多详情请参考官方文档
 
-    });
-</code></pre><h2 id="3-模仿jquery-each"><a href="#3-模仿jquery-each" class="headerlink" title="3.模仿jquery each"></a>3.模仿jquery each</h2><pre><code>function each(obj, fn){
-    var i;
-    if(Object.prototype.toString.call(obj) === &apos;[object Array]&apos;){
-        for(i = 0, length = obj.length; i &lt; length; i++){
-            fn.call(obj[i], i, obj[i]);
-        }
-    }
-    else if(typeof obj === &apos;object&apos;){
-        for(i in obj){
-            if(obj.hasOwnProperty(i)){
-               fn.call(obj[i], i, obj[i]);
-            }
-        }
-    }
-    else{
-        return false;
-    }
-}
+2. Node.js安装
+mac电脑可以直接通过brew安装
+
+#安装命令
+brew install node  #如果我没记错的话,最新版的node.js的包中已经集成了npm包管理工具
+
+使用以下命令验证是否安装成功
+node -v
+npm -v
+
+文／Andrew_liu（简书作者）
+原文链接：http://www.jianshu.com/p/858ecf233db9
+著作权归作者所有，转载请联系作者获得授权，并标注“简书作者”。
 </code></pre>
           
         

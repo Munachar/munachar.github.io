@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-08-29T02:01:43.275Z</updated>
+  <updated>2016-08-29T09:35:27.367Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,110 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript代码收集</title>
+    <link href="http://yoursite.com/2016/07/20/Javascript%E4%BB%A3%E7%A0%81%E6%94%B6%E9%9B%86/"/>
+    <id>http://yoursite.com/2016/07/20/Javascript代码收集/</id>
+    <published>2016-07-20T06:11:29.000Z</published>
+    <updated>2016-08-29T09:35:27.367Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-根据userAgent判断是否手机"><a href="#1-根据userAgent判断是否手机" class="headerlink" title="1.根据userAgent判断是否手机"></a>1.根据userAgent判断是否手机</h2><pre><code>if(/AppleWebKit.*Mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))){
+    if(window.location.href.indexOf(&quot;?mobile&quot;)&lt;0){
+        try{
+            if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){
+                //移动端
+            }else if(/iPad/i.test(navigator.userAgent)){
+                //这里对ipad做了处理
+            }else{
+                //移动端
+            }
+        }catch(e){}
+    }
+}else{
+    //pc端
+}
+var ISWP = !!(navigator.userAgent.match(/Windows\sPhone/i));
+</code></pre><a id="more"></a>
+<h2 id="2-this-constructor-prototype例子"><a href="#2-this-constructor-prototype例子" class="headerlink" title="2.this, constructor, prototype例子"></a>2.this, constructor, prototype例子</h2><pre><code>var Tinker = function(){
+    this.elements = [];
+
+};
+    Tinker.fn = Tinker.prototype = {
+        constructor: Tinker,
+        extend: function(obj){
+            var p;
+            for(p in obj){
+                this.constructor.prototype[p] = obj[p];//此处若看明白了, 那么前面的就理解了
+            }
+        }
+
+    }
+    Tinker.fn.extend({
+       get: function(){
+            var length = arguments.length,
+            i = 0;
+           for(; i &lt; length; i++){
+               this.elements.push(arguments[i]); //此处若看明白了, 那么前面的就理解了
+           }
+           return this;//此处若看明白了, 那么前面的就理解了
+       },
+       each: function(fn){
+            var i = 0,
+                length = this.elements.length;
+            for(; i &lt; length; i++){
+                fn.call(this.elements[i], i, this.elements[i]);
+            }
+            return this;//此处若看明白了, 那么前面的就理解了
+       }
+
+    });
+</code></pre><h2 id="3-模仿jquery-each"><a href="#3-模仿jquery-each" class="headerlink" title="3.模仿jquery each"></a>3.模仿jquery each</h2><pre><code>function each(obj, fn){
+    var i;
+    if(Object.prototype.toString.call(obj) === &apos;[object Array]&apos;){
+        for(i = 0, length = obj.length; i &lt; length; i++){
+            fn.call(obj[i], i, obj[i]);
+        }
+    }
+    else if(typeof obj === &apos;object&apos;){
+        for(i in obj){
+            if(obj.hasOwnProperty(i)){
+               fn.call(obj[i], i, obj[i]);
+            }
+        }
+    }
+    else{
+        return false;
+    }
+}
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;1-根据userAgent判断是否手机&quot;&gt;&lt;a href=&quot;#1-根据userAgent判断是否手机&quot; class=&quot;headerlink&quot; title=&quot;1.根据userAgent判断是否手机&quot;&gt;&lt;/a&gt;1.根据userAgent判断是否手机&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;if(/AppleWebKit.*Mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))){
+    if(window.location.href.indexOf(&amp;quot;?mobile&amp;quot;)&amp;lt;0){
+        try{
+            if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){
+                //移动端
+            }else if(/iPad/i.test(navigator.userAgent)){
+                //这里对ipad做了处理
+            }else{
+                //移动端
+            }
+        }catch(e){}
+    }
+}else{
+    //pc端
+}
+var ISWP = !!(navigator.userAgent.match(/Windows\sPhone/i));
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+    
+      <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>HTML5离线存储和本地缓存</title>
@@ -1194,9 +1298,9 @@ function template(tpl,obj){
       <category term="Testing" scheme="http://yoursite.com/categories/Testing/"/>
     
     
-      <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
-    
       <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="JavaScript" scheme="http://yoursite.com/tags/JavaScript/"/>
     
   </entry>
   
@@ -1539,53 +1643,6 @@ consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
     
     
       <category term="转载" scheme="http://yoursite.com/tags/%E8%BD%AC%E8%BD%BD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>postName</title>
-    <link href="http://yoursite.com/2015/08/12/postName/"/>
-    <id>http://yoursite.com/2015/08/12/postName/</id>
-    <published>2015-08-12T06:11:29.000Z</published>
-    <updated>2016-08-15T10:05:14.760Z</updated>
-    
-    <content type="html"><![CDATA[<pre><code>1. Git安装和Github设置
-使用Mac电脑可以直brew安装,
-
-brew install git         #Mac电脑使用brew安装
-sudo apt-get install git #Ubuntu系统使用这条命令安装
-git操作和github上SSH设置请看这篇博文
-
-使用Github Page搭建博客, 需要遵循一定的规则, 需要在github建立仓库,仓库名为Github用户.github.io, 更多详情请参考官方文档
-
-2. Node.js安装
-mac电脑可以直接通过brew安装
-
-#安装命令
-brew install node  #如果我没记错的话,最新版的node.js的包中已经集成了npm包管理工具
-
-使用以下命令验证是否安装成功
-node -v
-npm -v
-
-文／Andrew_liu（简书作者）
-原文链接：http://www.jianshu.com/p/858ecf233db9
-著作权归作者所有，转载请联系作者获得授权，并标注“简书作者”。
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;pre&gt;&lt;code&gt;1. Git安装和Github设置
-使用Mac电脑可以直brew安装,
-
-brew install git         #Mac电脑使用brew安装
-sudo apt-get install git #Ubuntu系统使用这条命令安装
-git操作和git
-    
-    </summary>
-    
-    
-      <category term="JS" scheme="http://yoursite.com/tags/JS/"/>
     
   </entry>
   

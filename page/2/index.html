@@ -283,6 +283,135 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/02/aplly&call方法的使用/" itemprop="url">
+                  aplly&call方法的使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-02T10:25:02+08:00" content="2016-07-02">
+              2016-07-02
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/02/aplly&call方法的使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/02/aplly&call方法的使用/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/07/02/aplly&call方法的使用/" class="leancloud_visitors" data-flag-title="aplly&call方法的使用">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h4 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h4><p>在一个对象中绑定函数，称为这个对象的方法。<br>在JavaScript中，对象的定义是这样的：</p>
+<pre><code>var xiaoming = {
+    name: ‘小明’,
+    birth: 1990
+};
+</code></pre><p>但是，如果我们给xiaoming绑定一个函数，就可以做更多的事情。比如，写个age()方法，返回xiaoming的年龄：</p>
+<pre><code>var xiaoming = {
+    name: ‘小明’,
+    birth: 1990,
+    age: function () {
+    var y = new Date().getFullYear();
+        return y - this.birth;
+    }
+};
+xiaoming.age; // function xiaoming.age()
+xiaoming.age(); // 今年调用是25,明年调用就变成26了
+</code></pre><p>绑定到对象上的函数称为方法，和普通函数也没啥区别，但是它在内部使用了一个this关键字，这个东东是什么？</p>
+<p>在一个方法内部，this是一个特殊变量，它始终指向当前对象，也就是xiaoming这个变量。所以，this.birth可以拿到xiaoming的birth属性。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/02/aplly&call方法的使用/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/01/清楚浮动/" itemprop="url">
                   清除浮动
                 </a>
@@ -1415,137 +1544,6 @@ consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
               阅读全文 &raquo;
             </a>
           </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/08/12/postName/" itemprop="url">
-                  postName
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-08-12T14:11:29+08:00" content="2015-08-12">
-              2015-08-12
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/08/12/postName/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/12/postName/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2015/08/12/postName/" class="leancloud_visitors" data-flag-title="postName">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <pre><code>1. Git安装和Github设置
-使用Mac电脑可以直brew安装,
-
-brew install git         #Mac电脑使用brew安装
-sudo apt-get install git #Ubuntu系统使用这条命令安装
-git操作和github上SSH设置请看这篇博文
-
-使用Github Page搭建博客, 需要遵循一定的规则, 需要在github建立仓库,仓库名为Github用户.github.io, 更多详情请参考官方文档
-
-2. Node.js安装
-mac电脑可以直接通过brew安装
-
-#安装命令
-brew install node  #如果我没记错的话,最新版的node.js的包中已经集成了npm包管理工具
-
-使用以下命令验证是否安装成功
-node -v
-npm -v
-
-文／Andrew_liu（简书作者）
-原文链接：http://www.jianshu.com/p/858ecf233db9
-著作权归作者所有，转载请联系作者获得授权，并标注“简书作者”。
-</code></pre>
-          
         
       
     </div>

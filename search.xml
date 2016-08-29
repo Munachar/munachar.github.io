@@ -4,6 +4,80 @@
   
     
     <entry>
+      <title><![CDATA[JavaScript代码收集]]></title>
+      <url>http://yoursite.com/2016/07/20/Javascript%E4%BB%A3%E7%A0%81%E6%94%B6%E9%9B%86/</url>
+      <content type="html"><![CDATA[<h2 id="1-根据userAgent判断是否手机"><a href="#1-根据userAgent判断是否手机" class="headerlink" title="1.根据userAgent判断是否手机"></a>1.根据userAgent判断是否手机</h2><pre><code>if(/AppleWebKit.*Mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))){
+    if(window.location.href.indexOf(&quot;?mobile&quot;)&lt;0){
+        try{
+            if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){
+                //移动端
+            }else if(/iPad/i.test(navigator.userAgent)){
+                //这里对ipad做了处理
+            }else{
+                //移动端
+            }
+        }catch(e){}
+    }
+}else{
+    //pc端
+}
+var ISWP = !!(navigator.userAgent.match(/Windows\sPhone/i));
+</code></pre><a id="more"></a>
+<h2 id="2-this-constructor-prototype例子"><a href="#2-this-constructor-prototype例子" class="headerlink" title="2.this, constructor, prototype例子"></a>2.this, constructor, prototype例子</h2><pre><code>var Tinker = function(){
+    this.elements = [];
+
+};
+    Tinker.fn = Tinker.prototype = {
+        constructor: Tinker,
+        extend: function(obj){
+            var p;
+            for(p in obj){
+                this.constructor.prototype[p] = obj[p];//此处若看明白了, 那么前面的就理解了
+            }
+        }
+
+    }
+    Tinker.fn.extend({
+       get: function(){
+            var length = arguments.length,
+            i = 0;
+           for(; i &lt; length; i++){
+               this.elements.push(arguments[i]); //此处若看明白了, 那么前面的就理解了
+           }
+           return this;//此处若看明白了, 那么前面的就理解了
+       },
+       each: function(fn){
+            var i = 0,
+                length = this.elements.length;
+            for(; i &lt; length; i++){
+                fn.call(this.elements[i], i, this.elements[i]);
+            }
+            return this;//此处若看明白了, 那么前面的就理解了
+       }
+
+    });
+</code></pre><h2 id="3-模仿jquery-each"><a href="#3-模仿jquery-each" class="headerlink" title="3.模仿jquery each"></a>3.模仿jquery each</h2><pre><code>function each(obj, fn){
+    var i;
+    if(Object.prototype.toString.call(obj) === &apos;[object Array]&apos;){
+        for(i = 0, length = obj.length; i &lt; length; i++){
+            fn.call(obj[i], i, obj[i]);
+        }
+    }
+    else if(typeof obj === &apos;object&apos;){
+        for(i in obj){
+            if(obj.hasOwnProperty(i)){
+               fn.call(obj[i], i, obj[i]);
+            }
+        }
+    }
+    else{
+        return false;
+    }
+}
+</code></pre>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[HTML5离线存储和本地缓存]]></title>
       <url>http://yoursite.com/2016/07/15/H5%E6%9C%AC%E5%9C%B0%E7%BC%93%E5%AD%98%E5%92%8C%E7%A6%BB%E7%BA%BF%E7%BC%93%E5%AD%98/</url>
       <content type="html"><![CDATA[<h1 id="一、离线缓存"><a href="#一、离线缓存" class="headerlink" title="一、离线缓存"></a>一、离线缓存</h1><p>有一个web应用有三个文件index.html,a.js,b.css，现在需要把js和css文件缓存起来</p>
@@ -1087,79 +1161,6 @@ npm -v
 文／Andrew_liu（简书作者）
 原文链接：http://www.jianshu.com/p/858ecf233db9
 著作权归作者所有，转载请联系作者获得授权，并标注“简书作者”。
-</code></pre>]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[postName]]></title>
-      <url>http://yoursite.com/2015/07/20/Javascript%E4%BB%A3%E7%A0%81%E6%94%B6%E9%9B%86/</url>
-      <content type="html"><![CDATA[<h2 id="1-根据userAgent判断是否手机"><a href="#1-根据userAgent判断是否手机" class="headerlink" title="1.根据userAgent判断是否手机"></a>1.根据userAgent判断是否手机</h2><pre><code>if(/AppleWebKit.*Mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))){
-    if(window.location.href.indexOf(&quot;?mobile&quot;)&lt;0){
-        try{
-            if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){
-                //移动端
-            }else if(/iPad/i.test(navigator.userAgent)){
-                //这里对ipad做了处理
-            }else{
-                //移动端
-            }
-        }catch(e){}
-    }
-}else{
-    //pc端
-}
-var ISWP = !!(navigator.userAgent.match(/Windows\sPhone/i));
-</code></pre><h2 id="2-this-constructor-prototype例子"><a href="#2-this-constructor-prototype例子" class="headerlink" title="2.this, constructor, prototype例子"></a>2.this, constructor, prototype例子</h2><pre><code>var Tinker = function(){
-    this.elements = [];
-
-};
-    Tinker.fn = Tinker.prototype = {
-        constructor: Tinker,
-        extend: function(obj){
-            var p;
-            for(p in obj){
-                this.constructor.prototype[p] = obj[p];//此处若看明白了, 那么前面的就理解了
-            }
-        }
-
-    }
-    Tinker.fn.extend({
-       get: function(){
-            var length = arguments.length,
-            i = 0;
-           for(; i &lt; length; i++){
-               this.elements.push(arguments[i]); //此处若看明白了, 那么前面的就理解了
-           }
-           return this;//此处若看明白了, 那么前面的就理解了
-       },
-       each: function(fn){
-            var i = 0,
-                length = this.elements.length;
-            for(; i &lt; length; i++){
-                fn.call(this.elements[i], i, this.elements[i]);
-            }
-            return this;//此处若看明白了, 那么前面的就理解了
-       }
-
-    });
-</code></pre><h2 id="3-模仿jquery-each"><a href="#3-模仿jquery-each" class="headerlink" title="3.模仿jquery each"></a>3.模仿jquery each</h2><pre><code>function each(obj, fn){
-    var i;
-    if(Object.prototype.toString.call(obj) === &apos;[object Array]&apos;){
-        for(i = 0, length = obj.length; i &lt; length; i++){
-            fn.call(obj[i], i, obj[i]);
-        }
-    }
-    else if(typeof obj === &apos;object&apos;){
-        for(i in obj){
-            if(obj.hasOwnProperty(i)){
-               fn.call(obj[i], i, obj[i]);
-            }
-        }
-    }
-    else{
-        return false;
-    }
-}
 </code></pre>]]></content>
     </entry>
     
